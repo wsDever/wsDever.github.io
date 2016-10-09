@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  <subtitle>My GitHub Blog !</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://wsdever.github.io/"/>
+  <updated>2016-10-09T02:52:33.267Z</updated>
+  <id>http://wsdever.github.io/</id>
+  
+  <author>
+    <name>Wu Shang</name>
+    <email>809663381@qq.com</email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>20161009</title>
+    <link href="http://wsdever.github.io/2016/10/09/20161009/"/>
+    <id>http://wsdever.github.io/2016/10/09/20161009/</id>
+    <published>2016-10-09T02:52:33.000Z</published>
+    <updated>2016-10-09T02:52:33.267Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="html5" scheme="http://wsdever.github.io/categories/html5/"/>
+    
+    
+      <category term="html5" scheme="http://wsdever.github.io/tags/html5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS使用table布局妙用</title>
+    <link href="http://wsdever.github.io/2016/10/09/20160815/"/>
+    <id>http://wsdever.github.io/2016/10/09/20160815/</id>
+    <published>2016-10-09T02:07:07.000Z</published>
+    <updated>2016-10-09T04:00:55.884Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="动态垂直居中"><a href="#动态垂直居中" class="headerlink" title="动态垂直居中"></a>动态垂直居中</h3><p>将父级元素设置为<code>display:table</code>,子元素设置<code>disable:table-cell;vertical-align:middle</code>,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.box-wrap&#123;</div><div class="line">	display:table;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">	disable:table-cell;</div><div class="line">	vertical-align:middle</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>演示如下：</p>
+<p data-height="335" data-theme-id="0" data-slug-hash="WGzxJw" data-default-tab="css,result" data-user="wsdever" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/wsdever/pen/WGzxJw/" target="_blank" rel="external">css-table布局使用</a> by 小白 (<a href="http://codepen.io/wsdever" target="_blank" rel="external">@wsdever</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+
+
+<h3 id="动态水平居中"><a href="#动态水平居中" class="headerlink" title="动态水平居中"></a>动态水平居中</h3><p>如水平导航，一般的作法是设置元素<code>display:inline-block</code>，然后设置外层无元素为<code>text-align:center</code>，这样做可以实现要求，但是导航同级的元素都会继承外层的这个属性。现在用<code>display:table</code>来实现。<br>在居中元素上设置<code>display:table;margin:auto;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">.wrap&#123;</div><div class="line">	display:table;</div><div class="line">	margin:auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>演示如下：</p>
+<p data-height="305" data-theme-id="0" data-slug-hash="ORvXqy" data-default-tab="html,result" data-user="wsdever" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/wsdever/pen/ORvXqy/" target="_blank" rel="external">css-table布局-动态水平居中</a> by 小白 (<a href="http://codepen.io/wsdever" target="_blank" rel="external">@wsdever</a>) on <a href="http://codepen.io" target="_blank" rel="external">CodePen</a>.</p>
+
+
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;动态垂直居中&quot;&gt;&lt;a href=&quot;#动态垂直居中&quot; class=&quot;headerlink&quot; title=&quot;动态垂直居中&quot;&gt;&lt;/a&gt;动态垂直居中&lt;/h3&gt;&lt;p&gt;将父级元素设置为&lt;code&gt;display:table&lt;/code&gt;,子元素设置&lt;code&gt;disable:
+    
+    </summary>
+    
+      <category term="css" scheme="http://wsdever.github.io/categories/css/"/>
+    
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html5-canvas-模仿绘制360水晶球形进度条</title>
+    <link href="http://wsdever.github.io/2016/09/10/20160910/"/>
+    <id>http://wsdever.github.io/2016/09/10/20160910/</id>
+    <published>2016-09-10T02:07:07.000Z</published>
+    <updated>2016-10-01T13:57:54.796Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-ball.png" width="200"><br></div></p>
+<h3 id="绘制过程"><a href="#绘制过程" class="headerlink" title="绘制过程"></a>绘制过程</h3><h5 id="画外边的白色圆框"><a href="#画外边的白色圆框" class="headerlink" title="画外边的白色圆框"></a>画外边的白色圆框</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.arc(250, 250, 100, 0, Math.PI * 2, false);</div><div class="line">ctx.strokeStyle = &apos;#fff&apos;;  </div><div class="line">ctx.lineWidth = &quot;10&quot;;</div></pre></td></tr></table></figure>
+<h5 id="画里面的红色圆"><a href="#画里面的红色圆" class="headerlink" title="画里面的红色圆"></a>画里面的红色圆</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.arc(250, 250, 100, 0, Math.PI * 2, false);</div><div class="line">ctx.fillStyle = &quot;red&quot;;</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<h5 id="画下面的绿色部分"><a href="#画下面的绿色部分" class="headerlink" title="画下面的绿色部分"></a>画下面的绿色部分</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var ac =  (r - n * (2*r/10)) / r ;</div><div class="line">var ang1 = Math.asin(ac)  ;</div><div class="line">var ang2 = Math.PI - ang1 ;</div><div class="line">var canvas = document.getElementById(&quot;canvas&quot;);</div><div class="line">var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">ctx.beginPath();</div><div class="line">ctx.arc(250, 250, 100, ang1, ang2 , false);</div></pre></td></tr></table></figure>
+<p>但这只能画出一个水平的，其中r为半径，n为当前的进度转化成 10 以内的数，比如80%，对应着 8 。<br>要画出下面波浪，还需要在下方使用一条二次贝塞尔曲线对路径进行封闭，并使用由下向上的线性渐变进行填充。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.bezierCurveTo(cx1,cy1,cx2,cy2,ex,by);</div><div class="line">var landStyle = ctx.createLinearGradient(250 ,250 + 1.2*r ,250,250 - 1.2*r);</div><div class="line">landStyle.addColorStop(0,&quot;#580&quot;);</div><div class="line">landStyle.addColorStop(1,&quot;#030&quot;);</div><div class="line">ctx.fillStyle = landStyle;</div></pre></td></tr></table></figure></p>
+<h5 id="动态画进度数字"><a href="#动态画进度数字" class="headerlink" title="动态画进度数字"></a>动态画进度数字</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">txt =  n * 10 + &apos;%&apos;;</div><div class="line">ctx.font=&quot;30px Verdana&quot;;</div><div class="line">ctx.lineWidth = &quot;1&quot;;</div><div class="line">ctx.clearRect(250 - 0.35*r , 250 + 1.5 * r - 30, 100, 40);</div><div class="line">ctx.fillStyle = &quot;#fff&quot; ;</div><div class="line">ctx.fillText(txt,250 - 0.35*r , 250 + 1.5*r);</div></pre></td></tr></table></figure>
+<p>至此四步，一个水晶进度就画完了，自己也可以再做些美化，基本思路就是这样。重点是对贝塞尔曲线的位置计算。</p>
+<h3 id="演示地址："><a href="#演示地址：" class="headerlink" title="演示地址："></a>演示地址：</h3><h3 id="GitHub地址："><a href="#GitHub地址：" class="headerlink" title="GitHub地址："></a>GitHub地址：</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h3&gt;&lt;p&gt;使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示&lt;/p&gt;
+&lt;p&gt;&lt;div class=
+    
+    </summary>
+    
+      <category term="html5" scheme="http://wsdever.github.io/categories/html5/"/>
+    
+    
+      <category term="html5" scheme="http://wsdever.github.io/tags/html5/"/>
+    
+      <category term="canvas" scheme="http://wsdever.github.io/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Html5-canvas-绘制圆环渐变进度条</title>
+    <link href="http://wsdever.github.io/2016/08/13/20160813/"/>
+    <id>http://wsdever.github.io/2016/08/13/20160813/</id>
+    <published>2016-08-13T07:22:05.000Z</published>
+    <updated>2016-10-01T13:57:54.796Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。</p>
+<h3 id="绘制对称环形渐变"><a href="#绘制对称环形渐变" class="headerlink" title="绘制对称环形渐变"></a>绘制对称环形渐变</h3><p>这里使用的（水平）线性渐变。先使用createLinearGradient创建渐变，然后使用strokeStyle进行设置，然后使用stroke绘制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas&quot;);</div><div class="line">var ctx = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx.lineWidth = 5;</div><div class="line"></div><div class="line">ctx.beginPath(); </div><div class="line">ctx.moveTo(170, 120);</div><div class="line"></div><div class="line">var grd=ctx.createLinearGradient(0,0,170,0);</div><div class="line">grd.addColorStop(&quot;0&quot;,&quot;black&quot;);</div><div class="line">grd.addColorStop(&quot;0.3&quot;,&quot;magenta&quot;);</div><div class="line">grd.addColorStop(&quot;0.5&quot;,&quot;blue&quot;);</div><div class="line">grd.addColorStop(&quot;0.6&quot;,&quot;green&quot;);</div><div class="line">grd.addColorStop(&quot;0.8&quot;,&quot;yellow&quot;);</div><div class="line">grd.addColorStop(1,&quot;red&quot;);</div><div class="line"></div><div class="line">ctx.strokeStyle = grd;</div><div class="line">ctx.arc(120, 120, 50, 0 ,Math.PI*2);</div><div class="line">ctx.stroke(); // 画圆</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle2.png" width="200"><br></div>
+
+<h3 id="绘制非对称环形渐变"><a href="#绘制非对称环形渐变" class="headerlink" title="绘制非对称环形渐变"></a>绘制非对称环形渐变</h3><p>先使用ps制作一张环形渐变的图片。实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas2&quot;);</div><div class="line">var ctx2 = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx2.lineWidth = 5;</div><div class="line"></div><div class="line">var img;</div><div class="line">img = new Image();</div><div class="line">img.src = &quot;./canvas.png&quot;;</div><div class="line"></div><div class="line">if (img.complete) &#123;</div><div class="line">   setImageFill();</div><div class="line">&#125; else &#123;</div><div class="line">   img.onload = setImageFill;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var newFill = null;</div><div class="line">function setImageFill() &#123;</div><div class="line">    newFill = ctx2.createPattern(img, &apos;no-repeat&apos;);</div><div class="line">    ctx.beginPath();</div><div class="line">    ctx.strokeStyle = newFill;</div><div class="line">    ctx.arc(50, 50, 46, 0, Math.PI*2, false);</div><div class="line">    ctx.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle3.png" width="200"><br></div><br>效果已经基本上出现了，下面还需要让其动起来。</p>
+<h3 id="动态绘制"><a href="#动态绘制" class="headerlink" title="动态绘制"></a>动态绘制</h3><p>其实就是添加一个动态函数，在这里使用html5新添加的requestAnimationFrame，这个函数有兼容性的考虑，需要注意！这里不做处理！<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas2&quot;);</div><div class="line">var ctx2 = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx2.lineWidth = 5;</div><div class="line">ctx2.lineCap=&quot;round&quot;;</div><div class="line"></div><div class="line">var img;</div><div class="line">img = new Image();</div><div class="line">img.src = &quot;canvas.png&quot;;</div><div class="line"></div><div class="line">if (img.complete) &#123;</div><div class="line">       setImageFill();</div><div class="line">    &#125; else &#123;</div><div class="line">       img.onload = setImageFill;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var newFill = null;</div><div class="line">    function setImageFill() &#123;</div><div class="line">    	newFill = ctx2.createPattern(img, &apos;no-repeat&apos;);</div><div class="line">    	drawCircle(ctx2, 0,50);</div><div class="line">    &#125;</div><div class="line">    var stop = null ;</div><div class="line">    function drawCircle(ctx, x, end) &#123;</div><div class="line">        ctx.clearRect(0, 0, 300, 300);</div><div class="line">        ctx.beginPath();</div><div class="line">        ctx.strokeStyle = newFill;</div><div class="line">        if (x &lt; Math.PI*2*end/100) &#123;</div><div class="line">            x += Math.PI/100;</div><div class="line">        &#125; else &#123;</div><div class="line">             window.cancelAnimationFrame(stop)</div><div class="line">        &#125;</div><div class="line">        ctx.arc(50, 50, 46, 0, x, false);</div><div class="line">        ctx.stroke();</div><div class="line">        stop = requestAnimationFrame(function () &#123;</div><div class="line">            drawCircle(ctx, x ,end);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>其中的drawCircle第三个参数就是对应的值。<br>效果如下：</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle4.png" width="200"><br></div></p>
+<h3 id="演示地址"><a href="#演示地址" class="headerlink" title="演示地址"></a>演示地址</h3><p><a href="http://wslover.byethost11.com/canvas/bar-%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1/index2.html" target="_blank" rel="external">点击演示</a><br><a href="https://github.com/wsDever/canvas/tree/master/bar-%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1" target="_blank" rel="external">Github</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h3&gt;&lt;p&gt;项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。&lt;/p
+    
+    </summary>
+    
+      <category term="html5" scheme="http://wsdever.github.io/categories/html5/"/>
+    
+    
+      <category term="html5" scheme="http://wsdever.github.io/tags/html5/"/>
+    
+      <category term="canvas" scheme="http://wsdever.github.io/tags/canvas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>less中使用css3的calc的正确写法</title>
+    <link href="http://wsdever.github.io/2015/05/01/20150321/"/>
+    <id>http://wsdever.github.io/2015/05/01/20150321/</id>
+    <published>2015-05-01T13:17:23.000Z</published>
+    <updated>2016-10-05T09:36:10.480Z</updated>
+    
+    <content type="html"><![CDATA[<p>作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。</p>
+<h3 id="普通计算"><a href="#普通计算" class="headerlink" title="普通计算"></a>普通计算</h3><p>最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(50% - 50px);</div></pre></td></tr></table></figure></p>
+<p>结果，less编译的时候把这玩意当成运算式给直接计算了，成了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(0%);</div></pre></td></tr></table></figure></p>
+<p>于是，去查了一下less的用法才发现，原来是less的运算和calc的用法有重叠。所以应该把less编译这一次的计算给去掉。<br>正确写法应该是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(~&quot;50% - 50px&quot;);</div></pre></td></tr></table></figure></p>
+<p>也就是在calc里面加上 ~ 。</p>
+<h3 id="有变量参与计算"><a href="#有变量参与计算" class="headerlink" title="有变量参与计算"></a>有变量参与计算</h3><p>以上是可以了，担是当把 50px 换成另一个变量时，又编译出错了。也就是这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left: calc(~&quot;50% + @endwidth&quot; );</div></pre></td></tr></table></figure></p>
+<p>由于 ~ 能把less编译的这一次计算给去掉，而 @endwith 的值，需要计算两次，所以在去掉的时候，对@endwidth的计算不能去掉。<br>所以应该把 @endwidth 放在 ~ 的范围外面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left: calc(~&quot;50% +&quot; @endwidth);</div></pre></td></tr></table></figure></p>
+<h3 id="多变量连续计算"><a href="#多变量连续计算" class="headerlink" title="多变量连续计算"></a>多变量连续计算</h3><p>有了上面的解析，多变量计算就明白了，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@gap:10px;</div><div class="line">.init(@i)</div><div class="line">&#123;</div><div class="line">    left:calc(~&quot;50% -&quot;  @gap * @i ~&quot;-&quot; (@i * 2) * 50px) ;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">	.init(2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也就是，对需要去掉一次计算的(包括计算符)，需要放在 ~ 中，而需要在less编译的时候就计算一次的变量(或者常值)，直接放在 ~ 的范围外面。<br>编译结果，在css文件中可以看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">	left:calc( 50% - 200px )</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>calc是css3中一个非常有用的东东，但与less配合使用的时候，需要注意less编译时候的计算问题，根据需要是否需要去掉。其作法就是在不需要less编译的部分使用 ~ 包裹起来，而需要计算的则放在 ~ 的外在，特别需要注意的是运算符是否也需要包含。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。&lt;/p&gt;
+&lt;h3 id=&quot;普通计算&quot;&gt;&lt;a href=&quot;#普通计算&quot; class=&quot;headerlink&quot; title=&quot;普通计算&quot;&gt;&lt;/a&gt;普通计算&lt;/h3&gt;&lt;p&gt;最近
+    
+    </summary>
+    
+      <category term="css" scheme="http://wsdever.github.io/categories/css/"/>
+    
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
+      <category term="less" scheme="http://wsdever.github.io/tags/less/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Jquery无法修改input的type属性的替代解决方法</title>
+    <link href="http://wsdever.github.io/2015/03/24/20150324/"/>
+    <id>http://wsdever.github.io/2015/03/24/20150324/</id>
+    <published>2015-03-24T02:07:07.000Z</published>
+    <updated>2016-10-05T08:50:12.554Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>需要实现的效果：一个输入框，当输入框未获得焦点的时候，显示为 “请输入密码”；<br>当输入内容并失去焦点的时候，输入内容显示为” <strong>*</strong> ”，如果没有输入仍然显示“请输入密码”,通常做法是：</p>
+<ol>
+<li>使用text，隐藏域中，然后配合onkeypress、onkeyup、focus、blur等事件基本可以达到要求，此种方法比较麻烦;</li>
+<li>用text和password两个输入框，模拟</li>
+</ol>
+<h3 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h3><p>在这里主要讲讲如何用第二种方式实现。</p>
+<h4 id="html代码"><a href="#html代码" class="headerlink" title="html代码"></a>html代码</h4><pre><code>&lt;input type=&quot;password&quot; id=&quot;input_password&quot; value=&apos;&apos; style=&quot;display:none;color:#444;&quot;/&gt;
+&lt;input type=&quot;text&quot; id=&quot;showPwd&quot; value=&quot;请输入密码&quot; style=&quot;color:#c0c0c0&quot;/&gt;
+</code></pre><h4 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h4><pre><code>$(&quot;#showPwd&quot;).focus(function() {
+    var text_value = $(this).val();
+    if(text_value == &quot;请输入密码&quot;) {
+          $(&quot;#showPwd&quot;).hide();
+        $(&quot;#input_password&quot;).show().focus();
+       }
+});
+$(&quot;#input_password&quot;).blur(function() {
+       var text_value = $(this).val();
+    if(text_value == &quot;&quot;) {
+        $(&quot;#showPwd&quot;).show();
+        $(&quot;#input_password&quot;).hide();
+    }
+});
+</code></pre><p>至此完美解决，所有浏览器都可以使用。</p>
+<h3 id="扩展内容"><a href="#扩展内容" class="headerlink" title="扩展内容"></a>扩展内容</h3><p>也许很多人一开始想到的是用jquery的attr修改type属性值，但是测试发现在IE上会出错，如下：<br>    <code>uncaught exception type property can&#39;t be changed</code><br>查看到jQuery 1.42源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// We can&apos;t allow the type property to be changed (since it causes problems in IE)</div><div class="line">if(name === &quot;type&quot; &amp;&amp; rtype.test(elem.nodeName) &amp;&amp; elem.parentNode)&#123;</div><div class="line">	jQuery.error(&quot;type property can&apos;t be changed&quot;);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>主要还是“万能”的IE浏览器禁止修改input的type属性造成的。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h3&gt;&lt;p&gt;需要实现的效果：一个输入框，当输入框未获得焦点的时候，显示为 “请输入密码”；&lt;br&gt;当输入内容并失去焦点的时候，输入内容显
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
+    
+    
+      <category term="jquery" scheme="http://wsdever.github.io/tags/jquery/"/>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
+    
+      <category term="html" scheme="http://wsdever.github.io/tags/html/"/>
+    
+  </entry>
+  
+</feed>

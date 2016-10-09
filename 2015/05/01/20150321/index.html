@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>less中使用css3的calc的正确写法 | Hexo | My GitHub Blog !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="css,less">
+  <meta name="description" content="作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。
+普通计算最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：1@endwidth:calc(50% - 50px);
+结果，less编译的时候把这玩意当成运算式给直接计算了，成了1@endwidth:calc(0%);
+于是，去查了一下less的用法才发现，原来是less的运算">
+<meta property="og:type" content="article">
+<meta property="og:title" content="less中使用css3的calc的正确写法">
+<meta property="og:url" content="http://wsdever.github.io/2015/05/01/20150321/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。
+普通计算最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：1@endwidth:calc(50% - 50px);
+结果，less编译的时候把这玩意当成运算式给直接计算了，成了1@endwidth:calc(0%);
+于是，去查了一下less的用法才发现，原来是less的运算">
+<meta property="og:updated_time" content="2016-10-05T09:36:10.480Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="less中使用css3的calc的正确写法">
+<meta name="twitter:description" content="作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。
+普通计算最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：1@endwidth:calc(50% - 50px);
+结果，less编译的时候把这玩意当成运算式给直接计算了，成了1@endwidth:calc(0%);
+于是，去查了一下less的用法才发现，原来是less的运算">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">less中使用css3的calc的正确写法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">less中使用css3的calc的正确写法</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2015-05-01T13:17:23.000Z" itemprop="datePublished" class="page-time">
+  2015-05-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-20150321" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/less/">less</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#普通计算"><span class="post-toc-text">普通计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#有变量参与计算"><span class="post-toc-text">有变量参与计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多变量连续计算"><span class="post-toc-text">多变量连续计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <p>作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。</p>
+<h3 id="普通计算"><a href="#普通计算" class="headerlink" title="普通计算"></a>普通计算</h3><p>最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(50% - 50px);</div></pre></td></tr></table></figure></p>
+<p>结果，less编译的时候把这玩意当成运算式给直接计算了，成了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(0%);</div></pre></td></tr></table></figure></p>
+<p>于是，去查了一下less的用法才发现，原来是less的运算和calc的用法有重叠。所以应该把less编译这一次的计算给去掉。<br>正确写法应该是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(~&quot;50% - 50px&quot;);</div></pre></td></tr></table></figure></p>
+<p>也就是在calc里面加上 ~ 。</p>
+<h3 id="有变量参与计算"><a href="#有变量参与计算" class="headerlink" title="有变量参与计算"></a>有变量参与计算</h3><p>以上是可以了，担是当把 50px 换成另一个变量时，又编译出错了。也就是这样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left: calc(~&quot;50% + @endwidth&quot; );</div></pre></td></tr></table></figure></p>
+<p>由于 ~ 能把less编译的这一次计算给去掉，而 @endwith 的值，需要计算两次，所以在去掉的时候，对@endwidth的计算不能去掉。<br>所以应该把 @endwidth 放在 ~ 的范围外面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">left: calc(~&quot;50% +&quot; @endwidth);</div></pre></td></tr></table></figure></p>
+<h3 id="多变量连续计算"><a href="#多变量连续计算" class="headerlink" title="多变量连续计算"></a>多变量连续计算</h3><p>有了上面的解析，多变量计算就明白了，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@gap:10px;</div><div class="line">.init(@i)</div><div class="line">&#123;</div><div class="line">    left:calc(~&quot;50% -&quot;  @gap * @i ~&quot;-&quot; (@i * 2) * 50px) ;</div><div class="line">&#125;</div><div class="line">.box&#123;</div><div class="line">	.init(2);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也就是，对需要去掉一次计算的(包括计算符)，需要放在 ~ 中，而需要在less编译的时候就计算一次的变量(或者常值)，直接放在 ~ 的范围外面。<br>编译结果，在css文件中可以看到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box&#123;</div><div class="line">	left:calc( 50% - 200px )</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>calc是css3中一个非常有用的东东，但与less配合使用的时候，需要注意less编译时候的计算问题，根据需要是否需要去掉。其作法就是在不需要less编译的部分使用 ~ 包裹起来，而需要计算的则放在 ~ 的外在，特别需要注意的是运算符是否也需要包含。</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2015/05/01/20150321/" target="_blank" rel="external">http://wsdever.github.io/2015/05/01/20150321/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/08/13/20160813/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Html5-canvas-绘制圆环渐变进度条</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2015/03/24/20150324/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Jquery无法修改input的type属性的替代解决方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20150321" data-title="less中使用css3的calc的正确写法" data-url="http://wsdever.github.io/2015/05/01/20150321/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>html5-canvas-模仿绘制360水晶球形进度条 | Hexo | My GitHub Blog !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="html5,canvas">
+  <meta name="description" content="使用场景使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示
+
+绘制过程画外边的白色圆框123ctx.arc(250, 250, 100, 0, Math.PI * 2, false);ctx.strokeStyle = &amp;apos;#fff&amp;apos;;  ctx.lineWidth = &amp;quot;10&amp;quot;;
+画里面的红色圆123ctx.arc(250">
+<meta property="og:type" content="article">
+<meta property="og:title" content="html5-canvas-模仿绘制360水晶球形进度条">
+<meta property="og:url" content="http://wsdever.github.io/2016/09/10/20160910/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用场景使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示
+
+绘制过程画外边的白色圆框123ctx.arc(250, 250, 100, 0, Math.PI * 2, false);ctx.strokeStyle = &amp;apos;#fff&amp;apos;;  ctx.lineWidth = &amp;quot;10&amp;quot;;
+画里面的红色圆123ctx.arc(250">
+<meta property="og:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-ball.png">
+<meta property="og:updated_time" content="2016-10-01T13:57:54.796Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="html5-canvas-模仿绘制360水晶球形进度条">
+<meta name="twitter:description" content="使用场景使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示
+
+绘制过程画外边的白色圆框123ctx.arc(250, 250, 100, 0, Math.PI * 2, false);ctx.strokeStyle = &amp;apos;#fff&amp;apos;;  ctx.lineWidth = &amp;quot;10&amp;quot;;
+画里面的红色圆123ctx.arc(250">
+<meta name="twitter:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-ball.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">html5-canvas-模仿绘制360水晶球形进度条</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">html5-canvas-模仿绘制360水晶球形进度条</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-09-10T02:07:07.000Z" itemprop="datePublished" class="page-time">
+  2016-09-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/html5/">html5</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-20160910" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用场景"><span class="post-toc-text">使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制过程"><span class="post-toc-text">绘制过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#画外边的白色圆框"><span class="post-toc-text">画外边的白色圆框</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#画里面的红色圆"><span class="post-toc-text">画里面的红色圆</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#画下面的绿色部分"><span class="post-toc-text">画下面的绿色部分</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#动态画进度数字"><span class="post-toc-text">动态画进度数字</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#演示地址："><span class="post-toc-text">演示地址：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#GitHub地址："><span class="post-toc-text">GitHub地址：</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-ball.png" width="200"><br></div></p>
+<h3 id="绘制过程"><a href="#绘制过程" class="headerlink" title="绘制过程"></a>绘制过程</h3><h5 id="画外边的白色圆框"><a href="#画外边的白色圆框" class="headerlink" title="画外边的白色圆框"></a>画外边的白色圆框</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.arc(250, 250, 100, 0, Math.PI * 2, false);</div><div class="line">ctx.strokeStyle = &apos;#fff&apos;;  </div><div class="line">ctx.lineWidth = &quot;10&quot;;</div></pre></td></tr></table></figure>
+<h5 id="画里面的红色圆"><a href="#画里面的红色圆" class="headerlink" title="画里面的红色圆"></a>画里面的红色圆</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ctx.arc(250, 250, 100, 0, Math.PI * 2, false);</div><div class="line">ctx.fillStyle = &quot;red&quot;;</div><div class="line">ctx.fill();</div></pre></td></tr></table></figure>
+<h5 id="画下面的绿色部分"><a href="#画下面的绿色部分" class="headerlink" title="画下面的绿色部分"></a>画下面的绿色部分</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var ac =  (r - n * (2*r/10)) / r ;</div><div class="line">var ang1 = Math.asin(ac)  ;</div><div class="line">var ang2 = Math.PI - ang1 ;</div><div class="line">var canvas = document.getElementById(&quot;canvas&quot;);</div><div class="line">var ctx = canvas.getContext(&quot;2d&quot;);</div><div class="line">ctx.beginPath();</div><div class="line">ctx.arc(250, 250, 100, ang1, ang2 , false);</div></pre></td></tr></table></figure>
+<p>但这只能画出一个水平的，其中r为半径，n为当前的进度转化成 10 以内的数，比如80%，对应着 8 。<br>要画出下面波浪，还需要在下方使用一条二次贝塞尔曲线对路径进行封闭，并使用由下向上的线性渐变进行填充。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ctx.bezierCurveTo(cx1,cy1,cx2,cy2,ex,by);</div><div class="line">var landStyle = ctx.createLinearGradient(250 ,250 + 1.2*r ,250,250 - 1.2*r);</div><div class="line">landStyle.addColorStop(0,&quot;#580&quot;);</div><div class="line">landStyle.addColorStop(1,&quot;#030&quot;);</div><div class="line">ctx.fillStyle = landStyle;</div></pre></td></tr></table></figure></p>
+<h5 id="动态画进度数字"><a href="#动态画进度数字" class="headerlink" title="动态画进度数字"></a>动态画进度数字</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath();</div><div class="line">txt =  n * 10 + &apos;%&apos;;</div><div class="line">ctx.font=&quot;30px Verdana&quot;;</div><div class="line">ctx.lineWidth = &quot;1&quot;;</div><div class="line">ctx.clearRect(250 - 0.35*r , 250 + 1.5 * r - 30, 100, 40);</div><div class="line">ctx.fillStyle = &quot;#fff&quot; ;</div><div class="line">ctx.fillText(txt,250 - 0.35*r , 250 + 1.5*r);</div></pre></td></tr></table></figure>
+<p>至此四步，一个水晶进度就画完了，自己也可以再做些美化，基本思路就是这样。重点是对贝塞尔曲线的位置计算。</p>
+<h3 id="演示地址："><a href="#演示地址：" class="headerlink" title="演示地址："></a>演示地址：</h3><h3 id="GitHub地址："><a href="#GitHub地址：" class="headerlink" title="GitHub地址："></a>GitHub地址：</h3>
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2016/09/10/20160910/" target="_blank" rel="external">http://wsdever.github.io/2016/09/10/20160910/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/10/09/20160815/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">CSS使用table布局妙用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/08/13/20160813/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Html5-canvas-绘制圆环渐变进度条</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20160910" data-title="html5-canvas-模仿绘制360水晶球形进度条" data-url="http://wsdever.github.io/2016/09/10/20160910/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Html5-canvas-绘制圆环渐变进度条 | Hexo | My GitHub Blog !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="html5,canvas">
+  <meta name="description" content="使用场景项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。
+思路canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。
+绘制对称环形">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Html5-canvas-绘制圆环渐变进度条">
+<meta property="og:url" content="http://wsdever.github.io/2016/08/13/20160813/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="使用场景项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。
+思路canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。
+绘制对称环形">
+<meta property="og:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle2.png">
+<meta property="og:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle3.png">
+<meta property="og:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle4.png">
+<meta property="og:updated_time" content="2016-10-01T13:57:54.796Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Html5-canvas-绘制圆环渐变进度条">
+<meta name="twitter:description" content="使用场景项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。
+思路canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。
+绘制对称环形">
+<meta name="twitter:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle2.png">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Html5-canvas-绘制圆环渐变进度条</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">Html5-canvas-绘制圆环渐变进度条</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-08-13T07:22:05.000Z" itemprop="datePublished" class="page-time">
+  2016-08-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/html5/">html5</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-20160813" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/canvas/">canvas</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用场景"><span class="post-toc-text">使用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#思路"><span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制对称环形渐变"><span class="post-toc-text">绘制对称环形渐变</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制非对称环形渐变"><span class="post-toc-text">绘制非对称环形渐变</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#动态绘制"><span class="post-toc-text">动态绘制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#演示地址"><span class="post-toc-text">演示地址</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。</p>
+<h3 id="绘制对称环形渐变"><a href="#绘制对称环形渐变" class="headerlink" title="绘制对称环形渐变"></a>绘制对称环形渐变</h3><p>这里使用的（水平）线性渐变。先使用createLinearGradient创建渐变，然后使用strokeStyle进行设置，然后使用stroke绘制。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas&quot;);</div><div class="line">var ctx = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx.lineWidth = 5;</div><div class="line"></div><div class="line">ctx.beginPath(); </div><div class="line">ctx.moveTo(170, 120);</div><div class="line"></div><div class="line">var grd=ctx.createLinearGradient(0,0,170,0);</div><div class="line">grd.addColorStop(&quot;0&quot;,&quot;black&quot;);</div><div class="line">grd.addColorStop(&quot;0.3&quot;,&quot;magenta&quot;);</div><div class="line">grd.addColorStop(&quot;0.5&quot;,&quot;blue&quot;);</div><div class="line">grd.addColorStop(&quot;0.6&quot;,&quot;green&quot;);</div><div class="line">grd.addColorStop(&quot;0.8&quot;,&quot;yellow&quot;);</div><div class="line">grd.addColorStop(1,&quot;red&quot;);</div><div class="line"></div><div class="line">ctx.strokeStyle = grd;</div><div class="line">ctx.arc(120, 120, 50, 0 ,Math.PI*2);</div><div class="line">ctx.stroke(); // 画圆</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle2.png" width="200"><br></div>
+
+<h3 id="绘制非对称环形渐变"><a href="#绘制非对称环形渐变" class="headerlink" title="绘制非对称环形渐变"></a>绘制非对称环形渐变</h3><p>先使用ps制作一张环形渐变的图片。实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas2&quot;);</div><div class="line">var ctx2 = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx2.lineWidth = 5;</div><div class="line"></div><div class="line">var img;</div><div class="line">img = new Image();</div><div class="line">img.src = &quot;./canvas.png&quot;;</div><div class="line"></div><div class="line">if (img.complete) &#123;</div><div class="line">   setImageFill();</div><div class="line">&#125; else &#123;</div><div class="line">   img.onload = setImageFill;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var newFill = null;</div><div class="line">function setImageFill() &#123;</div><div class="line">    newFill = ctx2.createPattern(img, &apos;no-repeat&apos;);</div><div class="line">    ctx.beginPath();</div><div class="line">    ctx.strokeStyle = newFill;</div><div class="line">    ctx.arc(50, 50, 46, 0, Math.PI*2, false);</div><div class="line">    ctx.stroke();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>效果如下：</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle3.png" width="200"><br></div><br>效果已经基本上出现了，下面还需要让其动起来。</p>
+<h3 id="动态绘制"><a href="#动态绘制" class="headerlink" title="动态绘制"></a>动态绘制</h3><p>其实就是添加一个动态函数，在这里使用html5新添加的requestAnimationFrame，这个函数有兼容性的考虑，需要注意！这里不做处理！<br>代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">var canvas = document.getElementById(&quot;canvas2&quot;);</div><div class="line">var ctx2 = canvas.getContext(&apos;2d&apos;);</div><div class="line">ctx2.lineWidth = 5;</div><div class="line">ctx2.lineCap=&quot;round&quot;;</div><div class="line"></div><div class="line">var img;</div><div class="line">img = new Image();</div><div class="line">img.src = &quot;canvas.png&quot;;</div><div class="line"></div><div class="line">if (img.complete) &#123;</div><div class="line">       setImageFill();</div><div class="line">    &#125; else &#123;</div><div class="line">       img.onload = setImageFill;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var newFill = null;</div><div class="line">    function setImageFill() &#123;</div><div class="line">    	newFill = ctx2.createPattern(img, &apos;no-repeat&apos;);</div><div class="line">    	drawCircle(ctx2, 0,50);</div><div class="line">    &#125;</div><div class="line">    var stop = null ;</div><div class="line">    function drawCircle(ctx, x, end) &#123;</div><div class="line">        ctx.clearRect(0, 0, 300, 300);</div><div class="line">        ctx.beginPath();</div><div class="line">        ctx.strokeStyle = newFill;</div><div class="line">        if (x &lt; Math.PI*2*end/100) &#123;</div><div class="line">            x += Math.PI/100;</div><div class="line">        &#125; else &#123;</div><div class="line">             window.cancelAnimationFrame(stop)</div><div class="line">        &#125;</div><div class="line">        ctx.arc(50, 50, 46, 0, x, false);</div><div class="line">        ctx.stroke();</div><div class="line">        stop = requestAnimationFrame(function () &#123;</div><div class="line">            drawCircle(ctx, x ,end);</div><div class="line">        &#125;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>其中的drawCircle第三个参数就是对应的值。<br>效果如下：</p>
+<p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle4.png" width="200"><br></div></p>
+<h3 id="演示地址"><a href="#演示地址" class="headerlink" title="演示地址"></a>演示地址</h3><p><a href="http://wslover.byethost11.com/canvas/bar-%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1/index2.html" target="_blank" rel="external">点击演示</a><br><a href="https://github.com/wsDever/canvas/tree/master/bar-%E5%9C%86%E7%8E%AF%E8%BF%9B%E5%BA%A6%E6%9D%A1" target="_blank" rel="external">Github</a></p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2016/08/13/20160813/" target="_blank" rel="external">http://wsdever.github.io/2016/08/13/20160813/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2016/09/10/20160910/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">html5-canvas-模仿绘制360水晶球形进度条</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2015/05/01/20150321/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">less中使用css3的calc的正确写法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20160813" data-title="Html5-canvas-绘制圆环渐变进度条" data-url="http://wsdever.github.io/2016/08/13/20160813/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
