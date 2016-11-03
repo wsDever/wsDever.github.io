@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
-  <updated>2016-10-09T02:52:33.267Z</updated>
+  <updated>2016-10-09T04:00:55.884Z</updated>
   <id>http://wsdever.github.io/</id>
   
   <author>
@@ -14,24 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>20161009</title>
-    <link href="http://wsdever.github.io/2016/10/09/20161009/"/>
-    <id>http://wsdever.github.io/2016/10/09/20161009/</id>
-    <published>2016-10-09T02:52:33.000Z</published>
-    <updated>2016-10-09T02:52:33.267Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="html5" scheme="http://wsdever.github.io/categories/html5/"/>
-    
-    
-      <category term="html5" scheme="http://wsdever.github.io/tags/html5/"/>
-    
-  </entry>
   
   <entry>
     <title>CSS使用table布局妙用</title>
@@ -218,6 +200,75 @@ $(&quot;#input_password&quot;).blur(function() {
       <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
     
       <category term="html" scheme="http://wsdever.github.io/tags/html/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端零碎录</title>
+    <link href="http://wsdever.github.io/2014/10/09/20161009/"/>
+    <id>http://wsdever.github.io/2014/10/09/20161009/</id>
+    <published>2014-10-09T14:52:33.000Z</published>
+    <updated>2016-11-03T06:44:02.246Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="工作中一些经验总结"><a href="#工作中一些经验总结" class="headerlink" title="工作中一些经验总结"></a>工作中一些经验总结</h2><ol>
+<li><p>绑定事件时避免多次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">event.preventDefault();</div><div class="line">if (event &amp;&amp; event.stopPropagation) &#123;</div><div class="line">  event.stopPropagation();</div><div class="line">&#125; else &#123;//IE浏览器</div><div class="line">  event.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串与数字转换最简单方法：-0 和 + ‘’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = &apos;123.45&apos;; </div><div class="line">var b = a - 0;</div><div class="line">var c = 123 ;var d = c + &apos;&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>div中设置文字竖直居中方法</p>
+</li>
+</ol>
+<ul>
+<li><p>单行文字居中使用line-height方法，将文本的line-height设为与容器的height相等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height:100px; </div><div class="line">line-height:100px;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多行文字居中使用display:table-cell再设置vertical-align进行居中对齐 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">display:table-cell; </div><div class="line">vertical-align:middle</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>使checkbox与文字水平对齐：对style加上vertical-align:middle<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input style=&quot;color: red; vertical-align: middle;&quot; type=&quot;checkbox&quot; /&gt; &lt;label style=&quot;vertical-align: middle;&quot;&gt;我已阅读&lt;label /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如：</p>
+<p><input style="color: red; vertical-align: middle;" type="checkbox"> <label style="vertical-align: middle;">我已阅读<label> </label></label></p>
+<ol>
+<li><p>js处理绝对路径中的反斜杠方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.split(/\\/g)</div><div class="line">path为中文路径：E:\record\movie\2016-05-14\123.mp4</div></pre></td></tr></table></figure>
+</li>
+<li><p>页面禁止使用鼠标滚动缩放页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).on(&quot;mousewheel DOMMouseScroll&quot;, function (e) &#123;</div><div class="line">　　if(e.ctrlKey)&#123;</div><div class="line">　　　　e.preventDefault();</div><div class="line">　　&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用（主要是IE9）window.showModalDialog出现 不能执行已释放Script的代码 错误的解决方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">将window.returnValue的值转化成bool或者字符串，不能为object</div></pre></td></tr></table></figure>
+</li>
+<li><p>jquery鼠标滚轮事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(document).on(&quot;mousewheel DOMMouseScroll&quot;, function (e) &#123;    </div><div class="line">	var delta = (e.originalEvent.wheelDelta &amp;&amp; (e.originalEvent.wheelDelta &gt; 0 ? 1 : -1)) ||  	// chrome &amp; ie</div><div class="line">            (e.originalEvent.detail &amp;&amp; (e.originalEvent.detail &gt; 0 ? -1 : 1));            		// firefox</div><div class="line">	if (delta &gt; 0) &#123;</div><div class="line">	    console.log(&quot;wheelup&quot;);</div><div class="line">	&#125; else if (delta &lt; 0) &#123;</div><div class="line">	    console.log(&quot;wheeldown&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">注意： jquery要使用2.0以下</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用img做背景图片时，出现无法消除的灰色边框，处理方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">添加src属性，同时设置空白图片</div><div class="line">&lt;img src=&quot;http://www.xcwljy.cn/images/pixel.gif&quot; style=&quot;background: url(&apos;../images/icon-rounded-hall.png&apos;) </div><div class="line">no-repeat;border: none;&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;工作中一些经验总结&quot;&gt;&lt;a href=&quot;#工作中一些经验总结&quot; class=&quot;headerlink&quot; title=&quot;工作中一些经验总结&quot;&gt;&lt;/a&gt;工作中一些经验总结&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;绑定事件时避免多次执行&lt;/p&gt;
+&lt;figure class=&quot;hi
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
+    
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
+      <category term="jquery" scheme="http://wsdever.github.io/tags/jquery/"/>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
     
   </entry>
   

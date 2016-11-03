@@ -3,23 +3,35 @@
 <head>
   <meta charset="utf-8">
   
-  <title>20161009 | Hexo | My GitHub Blog !</title>
+  <title>前端零碎录 | Hexo | My GitHub Blog !</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
   
   
-  <meta name="keywords" content="html5">
-  <meta name="description" content="None">
+  <meta name="keywords" content="css,jquery,javascript">
+  <meta name="description" content="工作中一些经验总结
+绑定事件时避免多次执行
+123456event.preventDefault();if (event &amp;amp;&amp;amp; event.stopPropagation) &amp;#123;  event.stopPropagation();&amp;#125; else &amp;#123;//IE浏览器  event.cancelBubble = true;&amp;#125;
+
+字符串与数字转换最简单方">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20161009">
-<meta property="og:url" content="http://wsdever.github.io/2016/10/09/20161009/index.html">
+<meta property="og:title" content="前端零碎录">
+<meta property="og:url" content="http://wsdever.github.io/2014/10/09/20161009/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="None">
-<meta property="og:updated_time" content="2016-10-09T02:52:33.267Z">
+<meta property="og:description" content="工作中一些经验总结
+绑定事件时避免多次执行
+123456event.preventDefault();if (event &amp;amp;&amp;amp; event.stopPropagation) &amp;#123;  event.stopPropagation();&amp;#125; else &amp;#123;//IE浏览器  event.cancelBubble = true;&amp;#125;
+
+字符串与数字转换最简单方">
+<meta property="og:updated_time" content="2016-11-03T06:44:02.246Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20161009">
-<meta name="twitter:description" content="None">
+<meta name="twitter:title" content="前端零碎录">
+<meta name="twitter:description" content="工作中一些经验总结
+绑定事件时避免多次执行
+123456event.preventDefault();if (event &amp;amp;&amp;amp; event.stopPropagation) &amp;#123;  event.stopPropagation();&amp;#125; else &amp;#123;//IE浏览器  event.cancelBubble = true;&amp;#125;
+
+字符串与数字转换最简单方">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -110,7 +122,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">20161009</div>
+        <div class="flex-col header-title ellipsis">前端零碎录</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -127,15 +139,15 @@
 </header>
 <header class="content-header">
   <div class="container">
-    <h1 class="author">20161009</h1>
+    <h1 class="author">前端零碎录</h1>
     <h5 class="subtitle">
         
-            <time datetime="2016-10-09T02:52:33.000Z" itemprop="datePublished" class="page-time">
-  2016-10-09
+            <time datetime="2014-10-09T14:52:33.000Z" itemprop="datePublished" class="page-time">
+  2014-10-09
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/html5/">html5</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/javascript/">javascript</a></li></ul>
 
         
     </h5>
@@ -147,7 +159,7 @@
   class="article article-type-post" itemprop="blogPost">
     <div class="post-meta flex-row">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jquery/">jquery</a></li></ul>
 
     </div>
     <div class="post-body">
@@ -157,7 +169,7 @@
 
             
             <nav class="post-toc-wrap" id="post-toc">
-            
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工作中一些经验总结"><span class="post-toc-text">工作中一些经验总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#未完待续…"><span class="post-toc-text">未完待续…</span></a></li></ol></li></ol>
             </nav>
             
         </aside>
@@ -165,7 +177,48 @@
         <div class="post-main">
 
             <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <h2 id="工作中一些经验总结"><a href="#工作中一些经验总结" class="headerlink" title="工作中一些经验总结"></a>工作中一些经验总结</h2><ol>
+<li><p>绑定事件时避免多次执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">event.preventDefault();</div><div class="line">if (event &amp;&amp; event.stopPropagation) &#123;</div><div class="line">  event.stopPropagation();</div><div class="line">&#125; else &#123;//IE浏览器</div><div class="line">  event.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>字符串与数字转换最简单方法：-0 和 + ‘’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = &apos;123.45&apos;; </div><div class="line">var b = a - 0;</div><div class="line">var c = 123 ;var d = c + &apos;&apos;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>div中设置文字竖直居中方法</p>
+</li>
+</ol>
+<ul>
+<li><p>单行文字居中使用line-height方法，将文本的line-height设为与容器的height相等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">height:100px; </div><div class="line">line-height:100px;</div></pre></td></tr></table></figure>
+</li>
+<li><p>多行文字居中使用display:table-cell再设置vertical-align进行居中对齐 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">display:table-cell; </div><div class="line">vertical-align:middle</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol>
+<li>使checkbox与文字水平对齐：对style加上vertical-align:middle<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;input style=&quot;color: red; vertical-align: middle;&quot; type=&quot;checkbox&quot; /&gt; &lt;label style=&quot;vertical-align: middle;&quot;&gt;我已阅读&lt;label /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如：</p>
+<p><input style="color: red; vertical-align: middle;" type="checkbox"> <label style="vertical-align: middle;">我已阅读<label> </label></label></p>
+<ol>
+<li><p>js处理绝对路径中的反斜杠方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.split(/\\/g)</div><div class="line">path为中文路径：E:\record\movie\2016-05-14\123.mp4</div></pre></td></tr></table></figure>
+</li>
+<li><p>页面禁止使用鼠标滚动缩放页面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$(document).on(&quot;mousewheel DOMMouseScroll&quot;, function (e) &#123;</div><div class="line">　　if(e.ctrlKey)&#123;</div><div class="line">　　　　e.preventDefault();</div><div class="line">　　&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用（主要是IE9）window.showModalDialog出现 不能执行已释放Script的代码 错误的解决方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">将window.returnValue的值转化成bool或者字符串，不能为object</div></pre></td></tr></table></figure>
+</li>
+<li><p>jquery鼠标滚轮事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$(document).on(&quot;mousewheel DOMMouseScroll&quot;, function (e) &#123;    </div><div class="line">	var delta = (e.originalEvent.wheelDelta &amp;&amp; (e.originalEvent.wheelDelta &gt; 0 ? 1 : -1)) ||  	// chrome &amp; ie</div><div class="line">            (e.originalEvent.detail &amp;&amp; (e.originalEvent.detail &gt; 0 ? -1 : 1));            		// firefox</div><div class="line">	if (delta &gt; 0) &#123;</div><div class="line">	    console.log(&quot;wheelup&quot;);</div><div class="line">	&#125; else if (delta &lt; 0) &#123;</div><div class="line">	    console.log(&quot;wheeldown&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line">注意： jquery要使用2.0以下</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用img做背景图片时，出现无法消除的灰色边框，处理方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">添加src属性，同时设置空白图片</div><div class="line">&lt;img src=&quot;http://www.xcwljy.cn/images/pixel.gif&quot; style=&quot;background: url(&apos;../images/icon-rounded-hall.png&apos;) </div><div class="line">no-repeat;border: none;&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="未完待续…"><a href="#未完待续…" class="headerlink" title="未完待续…"></a>未完待续…</h3>
 
             
             <div class="post-reward">
@@ -176,7 +229,7 @@
             <blockquote>
                 <p>
                 本文地址：
-                <a href="http://wsdever.github.io/2016/10/09/20161009/" target="_blank" rel="external">http://wsdever.github.io/2016/10/09/20161009/</a>
+                <a href="http://wsdever.github.io/2014/10/09/20161009/" target="_blank" rel="external">http://wsdever.github.io/2014/10/09/20161009/</a>
                 </p>
                 <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
             </blockquote>
@@ -184,14 +237,14 @@
             
 <nav class="post-nav">
   
-
-  
-    <div class="waves-block waves-effect next fr">
-      <a href="/2016/10/09/20160815/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">CSS使用table布局妙用</h4>
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2015/03/24/20150324/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Jquery无法修改input的type属性的替代解决方法</h4>
       </a>
     </div>
+  
+
   
 </nav>
 
@@ -200,7 +253,7 @@
             
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="20161009" data-title="20161009" data-url="http://wsdever.github.io/2016/10/09/20161009/index.html"></div>
+	<div class="ds-thread" data-thread-key="20161009" data-title="前端零碎录" data-url="http://wsdever.github.io/2014/10/09/20161009/index.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
