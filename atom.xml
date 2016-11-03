@@ -208,7 +208,7 @@ $(&quot;#input_password&quot;).blur(function() {
     <link href="http://wsdever.github.io/2014/10/09/20161009/"/>
     <id>http://wsdever.github.io/2014/10/09/20161009/</id>
     <published>2014-10-09T14:52:33.000Z</published>
-    <updated>2016-11-03T06:58:16.931Z</updated>
+    <updated>2016-11-03T07:00:25.285Z</updated>
     
     <content type="html"><![CDATA[<h2 id="工作中一些经验总结"><a href="#工作中一些经验总结" class="headerlink" title="工作中一些经验总结"></a>工作中一些经验总结</h2><h3 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h3><ol>
 <li><p>绑定事件时避免多次执行</p>
@@ -219,11 +219,10 @@ $(&quot;#input_password&quot;).blur(function() {
 </li>
 <li><p>使checkbox与文字水平对齐：对style加上vertical-align:middle</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input style=&quot;color: red; vertical-align: middle;&quot; type=&quot;checkbox&quot; /&gt;</div><div class="line">&lt;label style=&quot;vertical-align: middle;&quot;&gt;我已阅读&lt;label /&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
 <p>如：<input style="color: red; vertical-align: middle;" type="checkbox"> <label style="vertical-align: middle;">我已阅读<label> </label></label></p>
-<ol>
-<li>div中设置文字竖直居中方法</li>
+</li>
+<li><p>div中设置文字竖直居中方法</p>
+</li>
 </ol>
 <ul>
 <li><p>单行文字居中使用line-height方法，将文本的line-height设为与容器的height相等</p>
