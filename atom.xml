@@ -208,17 +208,22 @@ $(&quot;#input_password&quot;).blur(function() {
     <link href="http://wsdever.github.io/2014/10/09/20161009/"/>
     <id>http://wsdever.github.io/2014/10/09/20161009/</id>
     <published>2014-10-09T14:52:33.000Z</published>
-    <updated>2016-11-03T06:48:43.602Z</updated>
+    <updated>2016-11-03T06:58:16.931Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="工作中一些经验总结"><a href="#工作中一些经验总结" class="headerlink" title="工作中一些经验总结"></a>工作中一些经验总结</h2><ol>
+    <content type="html"><![CDATA[<h2 id="工作中一些经验总结"><a href="#工作中一些经验总结" class="headerlink" title="工作中一些经验总结"></a>工作中一些经验总结</h2><h3 id="第一部分"><a href="#第一部分" class="headerlink" title="第一部分"></a>第一部分</h3><ol>
 <li><p>绑定事件时避免多次执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">event.preventDefault();</div><div class="line">if (event &amp;&amp; event.stopPropagation) &#123;</div><div class="line">  event.stopPropagation();</div><div class="line">&#125; else &#123;//IE浏览器</div><div class="line">  event.cancelBubble = true;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
-<li><p>字符串与数字转换最简单方法：-0 和 + ‘’</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = &apos;123.45&apos;; </div><div class="line">var b = a - 0;</div><div class="line">var c = 123 ;var d = c + &apos;&apos;;</div></pre></td></tr></table></figure>
+<li><p>字符串与数字转换最简单方法：-0 和 + ‘ ‘</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = &apos;123.45&apos;; </div><div class="line">var b = a - 0;</div><div class="line">var c = 123 ;</div><div class="line">var d = c + &apos;&apos;;</div></pre></td></tr></table></figure>
 </li>
-<li><p>div中设置文字竖直居中方法</p>
+<li><p>使checkbox与文字水平对齐：对style加上vertical-align:middle</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input style=&quot;color: red; vertical-align: middle;&quot; type=&quot;checkbox&quot; /&gt;</div><div class="line">&lt;label style=&quot;vertical-align: middle;&quot;&gt;我已阅读&lt;label /&gt;</div></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>如：<input style="color: red; vertical-align: middle;" type="checkbox"> <label style="vertical-align: middle;">我已阅读<label> </label></label></p>
+<ol>
+<li>div中设置文字竖直居中方法</li>
 </ol>
 <ul>
 <li><p>单行文字居中使用line-height方法，将文本的line-height设为与容器的height相等</p>
@@ -228,12 +233,7 @@ $(&quot;#input_password&quot;).blur(function() {
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">display:table-cell; </div><div class="line">vertical-align:middle</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<ol>
-<li>使checkbox与文字水平对齐：对style加上vertical-align:middle<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;input style=&quot;color: red; vertical-align: middle;&quot; type=&quot;checkbox&quot; /&gt;</div><div class="line">&lt;label style=&quot;vertical-align: middle;&quot;&gt;我已阅读&lt;label /&gt;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>如：<input style="color: red; vertical-align: middle;" type="checkbox"> <label style="vertical-align: middle;">我已阅读<label> </label></label></p>
-<ol>
+<h3 id="第二部分"><a href="#第二部分" class="headerlink" title="第二部分"></a>第二部分</h3><ol>
 <li><p>js处理绝对路径中的反斜杠方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">path.split(/\\/g)</div><div class="line">path为中文路径：E:\record\movie\2016-05-14\123.mp4</div></pre></td></tr></table></figure>
 </li>
@@ -254,9 +254,7 @@ $(&quot;#input_password&quot;).blur(function() {
     
     <summary type="html">
     
-      &lt;h2 id=&quot;工作中一些经验总结&quot;&gt;&lt;a href=&quot;#工作中一些经验总结&quot; class=&quot;headerlink&quot; title=&quot;工作中一些经验总结&quot;&gt;&lt;/a&gt;工作中一些经验总结&lt;/h2&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;绑定事件时避免多次执行&lt;/p&gt;
-&lt;figure class=&quot;hi
+      &lt;h2 id=&quot;工作中一些经验总结&quot;&gt;&lt;a href=&quot;#工作中一些经验总结&quot; class=&quot;headerlink&quot; title=&quot;工作中一些经验总结&quot;&gt;&lt;/a&gt;工作中一些经验总结&lt;/h2&gt;&lt;h3 id=&quot;第一部分&quot;&gt;&lt;a href=&quot;#第一部分&quot; class=&quot;headerli
     
     </summary>
     
