@@ -48,6 +48,78 @@
   </entry>
   
   <entry>
+    <title>ES6中const的使用</title>
+    <link href="http://wsdever.github.io/2016/10/04/20161104/"/>
+    <id>http://wsdever.github.io/2016/10/04/20161104/</id>
+    <published>2016-10-04T02:01:18.000Z</published>
+    <updated>2016-11-04T06:19:35.126Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>ES6中const声明一个只读的常量，一旦声明，值就不能改变，所以const一旦声明变量，就必须立即初始化，不能留到以后赋值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const PI = 3.1415;</div><div class="line">PI 			// 3.1415</div><div class="line">PI = 3;		// 报错</div><div class="line"></div><div class="line">const a ;	// 报错</div><div class="line">a = 3 ;</div></pre></td></tr></table></figure></p>
+<h4 id="与let相似的特点"><a href="#与let相似的特点" class="headerlink" title="与let相似的特点"></a>与let相似的特点</h4><ul>
+<li><p>作用域<br>const的作用域与let命令相同：只在声明所在的块级作用域内有效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  const tmp = 5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">tmp 			// 报错</div></pre></td></tr></table></figure>
+</li>
+<li><p>常量不提升<br>const命令声明的常量也是不提升，同样存在暂时性死区</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  console.log(a); // 报错</div><div class="line">  const a = 5;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>不可重复定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = &quot;Hello!&quot;;</div><div class="line">let b = 25;</div><div class="line"></div><div class="line">// 以下两行都会报错</div><div class="line">const a = &quot;Goodbye!&quot;;</div><div class="line">const b = 30;</div></pre></td></tr></table></figure>
+</li>
+<li><p>常量不属于顶层变量</p>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;基本用法&quot;&gt;&lt;a href=&quot;#基本用法&quot; class=&quot;headerlink&quot; title=&quot;基本用法&quot;&gt;&lt;/a&gt;基本用法&lt;/h4&gt;&lt;p&gt;ES6中const声明一个只读的常量，一旦声明，值就不能改变，所以const一旦声明变量，就必须立即初始化，不能留到以后赋值
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://wsdever.github.io/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ES6中let的使用</title>
+    <link href="http://wsdever.github.io/2016/10/01/20161110/"/>
+    <id>http://wsdever.github.io/2016/10/01/20161110/</id>
+    <published>2016-10-01T02:01:18.000Z</published>
+    <updated>2016-11-04T06:10:06.082Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>let是ES6中新添加的命令，用来声明变量，用法类似var，但是所声明的变量，只在let命令所在的代码块内有效，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for(var i=0;i&lt;1;i++)&#123;</div><div class="line">	var b = 3;</div><div class="line">	let c = 4;</div><div class="line">&#125;</div><div class="line">console.log(b);			// 输出为:3</div><div class="line">console.log(c);			// 出错</div></pre></td></tr></table></figure></p>
+<p>在代码块之外调用这两个变量，结果let声明的变量报错，var声明的变量返回了正确的值。<br>这表明，let声明的变量只在它所在的代码块有效。<br>再如下面的计数器代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = [];</div><div class="line">for (var i = 0; i &lt; 10; i++) &#123;</div><div class="line">  a[i] = function () &#123;</div><div class="line">    console.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[6](); 		// 10</div></pre></td></tr></table></figure></p>
+<p>由于var声明的变量在整个作用域中都有用，所以每一次循环，新的i值都会覆盖旧值，导致输出的是最后一轮的i的值，也就是 10 。<br>如果用循环输出a<a href="">i</a>，所有的值都是 10 。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = [];</div><div class="line">for (let i = 0; i &lt; 10; i++) &#123;</div><div class="line">  a[i] = function () &#123;</div><div class="line">    console.log(i);</div><div class="line">  &#125;;</div><div class="line">&#125;</div><div class="line">a[6](); 		// 6</div></pre></td></tr></table></figure></p>
+<p>由于let声明的变量只能在当前的代码块中都有用，所以每一次循环，相当于创建了一个新的变量i，所以每次输出的都是当前代码块中的i 。<br>如果用循环输出a<a href="">i</a>，得到的就是当前的 i 。</p>
+<h4 id="无变量提升"><a href="#无变量提升" class="headerlink" title="无变量提升"></a>无变量提升</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">console.log(foo); 		// 输出undefined</div><div class="line">console.log(bar); 		// 报错</div><div class="line"></div><div class="line">var foo = 2;</div><div class="line">let bar = 2;</div></pre></td></tr></table></figure>
+<p>var变量会被提升到代码块的最前面声明，而let不会，输出的时候就会报错。</p>
+<h4 id="变量区域绑定"><a href="#变量区域绑定" class="headerlink" title="变量区域绑定"></a>变量区域绑定</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = 123;</div><div class="line"></div><div class="line">if (true) &#123;</div><div class="line">  a = &apos;abc&apos;; 		// 报错</div><div class="line">  let a;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上面声明了一个局部变量a，导致后者绑定这个块级作用域，所以在let声明变量前，对a赋值会报错。<br>总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称TDZ）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">if (true) &#123;</div><div class="line">  // TDZ开始</div><div class="line">  tmp = &apos;abc&apos;; 			// 报错</div><div class="line">  console.log(tmp); 	// 报错</div><div class="line"></div><div class="line">  let tmp; // TDZ结束</div><div class="line">  console.log(tmp); 	// undefined</div><div class="line"></div><div class="line">  tmp = 123;</div><div class="line">  console.log(tmp); 	// 123</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="不允许重复声明"><a href="#不允许重复声明" class="headerlink" title="不允许重复声明"></a>不允许重复声明</h4><p>let不允许在相同作用域内，重复声明同一个变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 报错</div><div class="line">function () &#123;</div><div class="line">	var a = 3 ;		// 报错</div><div class="line">  	let a = 10;		// 报错</div><div class="line">  	let a = 1;		// 报错</div><div class="line">  	if(true)&#123;</div><div class="line">  		let a = 6 ;		// 正确</div><div class="line">  	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="全部let变量不属于顶层变量"><a href="#全部let变量不属于顶层变量" class="headerlink" title="全部let变量不属于顶层变量"></a>全部let变量不属于顶层变量</h4><p>var变量也是window顶层变量，而let变量不再属于window对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var a = 1;</div><div class="line">window.a 		// 1</div><div class="line">thiw.a 			1</div><div class="line"></div><div class="line">let b = 1;</div><div class="line">window.b 		// undefined</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;基本用法&quot;&gt;&lt;a href=&quot;#基本用法&quot; class=&quot;headerlink&quot; title=&quot;基本用法&quot;&gt;&lt;/a&gt;基本用法&lt;/h4&gt;&lt;p&gt;let是ES6中新添加的命令，用来声明变量，用法类似var，但是所声明的变量，只在let命令所在的代码块内有效，如：&lt;br&gt;
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
+    
+    
+      <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://wsdever.github.io/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
     <title>html5-canvas-模仿绘制360水晶球形进度条</title>
     <link href="http://wsdever.github.io/2016/09/10/20160910/"/>
     <id>http://wsdever.github.io/2016/09/10/20160910/</id>
