@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>HTML5-indexedDB 的使用 | Hexo | My GitHub Blog !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="html5">
+  <meta name="description" content="简单介绍IndexedDb是html5新添加的特性，目地是使本地数据能够持久性，使用户能够在线和离线访问 Web 应用程序。关于HTML5 本地数据持久性存储，除了IndexedDb，还有 localstorage，和 sessionstrorage ，它们均支持使用一个简单的键值对来存储需要的数据，但对大量结构化数据的存储及高效检索却显的无能为力。
+异步API在IndexedDB中的大部分操作并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5-indexedDB 的使用">
+<meta property="og:url" content="http://wsdever.github.io/2016/11/22/20161122/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简单介绍IndexedDb是html5新添加的特性，目地是使本地数据能够持久性，使用户能够在线和离线访问 Web 应用程序。关于HTML5 本地数据持久性存储，除了IndexedDb，还有 localstorage，和 sessionstrorage ，它们均支持使用一个简单的键值对来存储需要的数据，但对大量结构化数据的存储及高效检索却显的无能为力。
+异步API在IndexedDB中的大部分操作并">
+<meta property="og:updated_time" content="2016-11-22T07:47:49.073Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5-indexedDB 的使用">
+<meta name="twitter:description" content="简单介绍IndexedDb是html5新添加的特性，目地是使本地数据能够持久性，使用户能够在线和离线访问 Web 应用程序。关于HTML5 本地数据持久性存储，除了IndexedDb，还有 localstorage，和 sessionstrorage ，它们均支持使用一个简单的键值对来存储需要的数据，但对大量结构化数据的存储及高效检索却显的无能为力。
+异步API在IndexedDB中的大部分操作并">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTML5-indexedDB 的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">HTML5-indexedDB 的使用</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2016-11-22T06:30:42.000Z" itemprop="datePublished" class="page-time">
+  2016-11-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/html5/">html5</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-20161122" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html5/">html5</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单介绍"><span class="post-toc-text">简单介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#异步API"><span class="post-toc-text">异步API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库"><span class="post-toc-text">数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建数据库"><span class="post-toc-text">创建数据库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关闭-删除数据库"><span class="post-toc-text">关闭/删除数据库</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据存储对象（数据表）"><span class="post-toc-text">数据存储对象（数据表）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建objectStore（数据表）"><span class="post-toc-text">创建objectStore（数据表）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除objectStore（数据表）"><span class="post-toc-text">删除objectStore（数据表）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用事务"><span class="post-toc-text">使用事务</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作数据存储对象（数据表）"><span class="post-toc-text">操作数据存储对象（数据表）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建索引"><span class="post-toc-text">创建索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#删除索引"><span class="post-toc-text">删除索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用索引"><span class="post-toc-text">使用索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建游标"><span class="post-toc-text">创建游标</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#详细实例"><span class="post-toc-text">详细实例</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>IndexedDb是html5新添加的特性，目地是使本地数据能够持久性，使用户能够在线和离线访问 Web 应用程序。关于HTML5 本地数据持久性存储，除了IndexedDb，还有 localstorage，和 sessionstrorage ，它们均支持使用一个简单的键值对来存储需要的数据，但对大量结构化数据的存储及高效检索却显的无能为力。</p>
+<h3 id="异步API"><a href="#异步API" class="headerlink" title="异步API"></a>异步API</h3><p>在IndexedDB中的大部分操作并不是我们常用的“调用——返回”的模式，而是“请求——响应”的模式，<br>比如打开数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var request=window.indexedDB.open(&apos;myDB&apos;);</div></pre></td></tr></table></figure></p>
+<p>它的返回值并不是一个IndexedDb对象，而是一个请求体对象–IDBOpenDBRequest，其中包含了需要的IndexedDb对象，以及三个状态处理函数：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">onerror： 请求失败的回调函数</div><div class="line">onsuccess：请求成功的回调函数</div><div class="line">onupgradeneeded：请求数据库版本变化的回调函数</div></pre></td></tr></table></figure></p>
+<p><span style="color:red">因为是异步执行，所以请求执行完成，并不一定就能在返回的对象中获取到indexedDb对象句柄。为了避免出现错误，需要在回调中做出相应处理。</span></p>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><p><span style="color:green">说明</span>：<br>open可以打开或者创建数据库，如果调用的时候，当前数据库已经存在，则会直接打开，如果不存在就会创建。数据库创建的时候，默认版本是1，如果在open的时候有传入这个参数，那么就会修改数据库的版本号，并调用onupgradeneeded这个回调。需要说明的是，不能打开比当前版本低的数据库，会触发onerror。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">request = window.indexedDB.open(name[, version]);</div><div class="line">or</div><div class="line">request = window.indexedDB.open(name[, options])</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name：数据库的名称</div><div class="line">version：数据库的版本，可选</div><div class="line">option：包含版本及持久存储标志的对象，可选</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">返回值</span>：<br>一个IDBOpenDBRequest对象</p>
+<p><span style="color:green">实例</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var request = window.indexedDB.open(&quot;toDoList&quot;[, 4]);</div><div class="line">or：</div><div class="line">var request = window.indexedDB.open(&quot;toDoList&quot;[, &#123;version: 4, storage: &quot;temporary&quot;&#125;]);</div></pre></td></tr></table></figure></p>
+<h4 id="关闭-删除数据库"><a href="#关闭-删除数据库" class="headerlink" title="关闭/删除数据库"></a>关闭/删除数据库</h4><p><span style="color:green">说明</span>：<br>关闭数据库可以直接调用数据库IDBDatabase对象的close方法，删除数据库使用indexedDB对象的deleteDatabase，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IDBDatabase.close();</div><div class="line">indexedDB.deleteDatabase(name);</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">name：包含版本及持久存储标志的对象，可选</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">实例</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var DBOpenRequest = window.indexedDB.open(&quot;toDoList&quot;, 4);</div><div class="line">DBOpenRequest.onerror = function(event) &#123;</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">DBOpenRequest.onsuccess = function(event) &#123;</div><div class="line">      db = DBOpenRequest.result;</div><div class="line">      db.close();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="数据存储对象（数据表）"><a href="#数据存储对象（数据表）" class="headerlink" title="数据存储对象（数据表）"></a>数据存储对象（数据表）</h3><p><span style="color:green">说明</span>：<br>IndexedDb中的存储对象，相当于mySql中的数据表，一个数据库中可以创建多张数据表，在IndexedDb中也是一样，一个数据库中可以创建多个存储对象，称之为objectStore。</p>
+<h4 id="创建objectStore（数据表）"><a href="#创建objectStore（数据表）" class="headerlink" title="创建objectStore（数据表）"></a>创建objectStore（数据表）</h4><p><span style="color:green">说明</span>：<br>使用IDBDatabase对象的createObjectStore方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBDatabase.createObjectStore(storeName [,&quot;keyPath&quot;] )</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">storeName：存储对象的名字</div><div class="line">keyPath：主健名，可选</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">返回值</span>：<br>返回创建出来的存储对象。</p>
+<p><span style="color:green">实例</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBDatabase.createObjectStore(&apos;students&apos;,&#123;keyPath:&quot;id&quot;&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="删除objectStore（数据表）"><a href="#删除objectStore（数据表）" class="headerlink" title="删除objectStore（数据表）"></a>删除objectStore（数据表）</h4><p><span style="color:green">说明</span>：<br>使用IDBDatabase对象的deleteObjectStore方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBDatabase.deleteObjectStore(storeName)</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">storeName：要删除的存储对象</div></pre></td></tr></table></figure></p>
+<h4 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h4><p><span style="color:green">说明</span>：<br>在IndexedDb中对存储对象中的数据所有操作都是基于事务的，事务提供了数据库操作的一个原子集合，对数据进行写入操作，同时也具有中止和提交工具。</p>
+<p><span style="color:green">事务模式</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">模式                                描述</div><div class="line">readonly                            提供对某个对象存储的只读访问，在查询对象存储时使用。</div><div class="line">readwrite                           提供对某个对象存储的读取和写入访问权。</div><div class="line">versionchange                       提供读取和写入访问权来修改对象存储定义，或者创建一个新的对象存储。</div></pre></td></tr></table></figure></p>
+<p>默认的事务模式为 readonly，可以时刻打开多个 readonly 事务，但一次只能打开一个 readwrite 事务。因此，只有在数据更新时才考虑使用 readwrite 事务，其它情况下只用 readonly 。单独的（不同时打开其它类型事务时）versionchange 事务操作一个数据库或对象存储。可以在 onupgradeneeded 事件处理函数中使用 versionchange 事务用来创建、修改或删除一个对象存储。<br><span style="color:green">创建事务</span>：<br>使用IDBDatabase中的transaction(storeName,mode)来创建事务。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBDatabase.transaction(&quot;students&quot;);</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">storeName：	数据存储对象的名称，可以是多个，使用数组形式传入，此时模式不能是 readwrite</div><div class="line">mode：		事务模式，可选，不传入是使用默认值</div></pre></td></tr></table></figure></p>
+<h3 id="操作数据存储对象（数据表）"><a href="#操作数据存储对象（数据表）" class="headerlink" title="操作数据存储对象（数据表）"></a>操作数据存储对象（数据表）</h3><p><span style="color:red">关于索引</span>：<br>对索引的使用使得在web端对大量数据高效检索,快速定位成为可能，这也是IndexedDb与其它html5的web存储的主要区别之一。在indexedDB中有两种索引，一种是自增长的int值；一种是keyPath，是自己指定索引列，常用的索引也是这种。</p>
+<h4 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h4><p><span style="color:green">说明</span>：<br>使用IDBObjectStore的createIndex(objectIndexName, objectKeypath, optionalObjectParameters)来创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBObjectStore.createIndex(IndexName, Keypath, ObjectParameters)</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">indexName：要创建的索引名称</div><div class="line">Keypath：创建当前索引使用的存储对象的列记录</div><div class="line">ObjectParameters：当前索引可选的属性，为可选参数，其值可以有unique（唯一），multiEntry（可多选），locale</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">实例</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var store = IDBDatabase.createObjectStore(sName,&#123;&quot;keyPath&quot;:keyName&#125;);</div><div class="line">store.createIndex(&quot;nameIndex&quot;,&quot;name&quot;,&#123;unique:true&#125;);</div></pre></td></tr></table></figure></p>
+<h4 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h4><p><span style="color:green">说明</span>：<br>使用IDBObjectStore的deleteIndex(objectIndexName)来删除：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBObjectStore.deleteIndex(IndexName)</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">indexName：要删除的索引名称</div></pre></td></tr></table></figure></p>
+<h4 id="使用索引"><a href="#使用索引" class="headerlink" title="使用索引"></a>使用索引</h4><p><span style="color:green">说明</span>：<br>使用IDBObjectStore的index(objectIndexName)来获取索引IDBIndex 对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBObjectStore.index(IndexName)</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">indexName：已存在的索引名称</div><div class="line">&lt;span style=&quot;color:green&quot;&gt;返回值&lt;/span&gt;：</div><div class="line">IDBIndex对象，可以配合游标，检索数据。</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">实例</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function getDataByIndex(dbobj,storeName)&#123;</div><div class="line">    var transaction=dbobj.transaction(storeName);</div><div class="line">    var store=transaction.objectStore(storeName);</div><div class="line">    var index = store.index(&quot;nameIndex&quot;);</div><div class="line">    index.get(&apos;张三&apos;).onsuccess=function(e)&#123;</div><div class="line">        var student=e.target.result;</div><div class="line">        console.log(student.id);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><span style="color:red">关于游标</span>：<br>IndexedDb的游标，有点类似数组的下标值，可以向前，向后遍历一个数组，甚至可以配合其它条件跳过一些数据。索引跟游标是分不开的，可以在建立索引的时候同时建立游标，然后就可以对数据进行遍历。</p>
+<h4 id="创建游标"><a href="#创建游标" class="headerlink" title="创建游标"></a>创建游标</h4><p><span style="color:green">说明</span>：<br>使用IDBObjectStore的openCursor(KeyRange, Direction)来创建：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">IDBObjectStore.openCursor(KeyRange, Direction)</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">参数</span>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">KeyRange：游标的范围对象，即使用该游标时只会返回指定范围内的数据记录，可选，如果不送该值，则返回所有的数据记录。</div><div class="line">Direction：游标遍历的方向，可选，如果不送该值，则默认为“next”。</div></pre></td></tr></table></figure></p>
+<p>KeyRange取值，有以下四种<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// 只取得当前索引的值为 zhangsan 的数据</div><div class="line">IDBKeyRange.only(&quot;zhangsan&quot;);</div><div class="line">// 只取得当前索引的值大于 zhangsan，并且不包括 zhangsan 的数据</div><div class="line">IDBKeyRange.lowerBound(&quot;zhangsan&quot;, true);</div><div class="line">// 只取得当前索引的值小于 zhangsan，并且包括 zhangsan 的数据</div><div class="line">IDBKeyRange.upperBound(&quot;zhangsan&quot;, false);</div><div class="line">// 取得当前索引的值介于 zhangsan 和 lisi 之间，并且包括zhangsan，但不包括 lisi 的数据</div><div class="line">IDBKeyRange.bound(&quot;zhangsan&quot;, &quot;lisi&quot;, false, true);</div></pre></td></tr></table></figure></p>
+<p>Direction取值，有以下四种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">IDBCursor.NEXT                                  //顺序循环</div><div class="line">IDBCursor.NEXT_NO_DUPLICATE       				//顺序循环不重复</div><div class="line">IDBCursor.PREV                                  //倒序循环</div><div class="line">IDBCursor.PREV_NO_DUPLICATE        				//倒序循环不重复</div></pre></td></tr></table></figure></p>
+<p><span style="color:green">返回值</span>：<br>返回一个IDBRequest对像，其中包含数据记录的详细情况。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#### 遍历</div><div class="line">类似数组中的自增或自减的操作，IndexedDb中，使用continue()，来进行游标的移动，直到没有数据返回了，返回为undefined结束。</div><div class="line"></div><div class="line">### 兼容性</div><div class="line">现在大部分支持Html5的浏览器都已支持IndexedDb，但在IE11、Edge中只是部分功能支持，Opera暂时不支持，安卓4.4以上全部支持。</div><div class="line">通常在使用IndexedDb之前可以加部分前缀：</div></pre></td></tr></table></figure></p>
+<p>window.indexedDB = window.indexedDB || window.webkitIndexedDB || window.mozIndexedDB ||window.msIndexedDB ;<br>window.IDBCursor = window.IDBCursor || window.webkitIDBCursor || window.msIDBCursor ;<br>window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction ;<br>window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange ;<br>```<br>具体可<a style="color:red" href="http://caniuse.com/#feat=indexeddb" target="_blank" _blank="" rel="external">点击此处</a>查询。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>IndexedDb是HTML5 的一个重要特性，它实现了本地数据的持久性，使用户能够在线和离线访问 Web 应用程序，也使移动应用程序更灵敏，使用的带宽更少，而且能够在低带宽场景中更高效地工作。在使用过程中，只有将索引，游标等功能相结合才能发挥出它最大的作用。</p>
+<h3 id="详细实例"><a href="#详细实例" class="headerlink" title="详细实例"></a>详细实例</h3><p>可以<a href="http://wslover.byethost11.com/shows/db02/DbTest.html" style="color:red" target="_blank">点击此处</a>进行在线演示。<br>所有代码以放在github上，<a href="https://github.com/wsDever/indexedDb" style="color:red" target="_blank">点击此处</a>下载。</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2016/11/22/20161122/" target="_blank" rel="external">http://wsdever.github.io/2016/11/22/20161122/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/10/09/20160815/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CSS使用table布局妙用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20161122" data-title="HTML5-indexedDB 的使用" data-url="http://wsdever.github.io/2016/11/22/20161122/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
