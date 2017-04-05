@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
-  <updated>2016-11-22T07:47:49.073Z</updated>
+  <updated>2017-04-05T07:20:14.510Z</updated>
   <id>http://wsdever.github.io/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用纯CSS3实现三角或箭头</title>
+    <link href="http://wsdever.github.io/2017/02/15/css-angel/"/>
+    <id>http://wsdever.github.io/2017/02/15/css-angel/</id>
+    <published>2017-02-15T10:28:03.000Z</published>
+    <updated>2017-04-05T07:20:14.510Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。<br>今天在这里给出几种用css3做出来的样式</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>元素的border属性，两端拐角其实是梯形连接，当元素的高与宽相等时可以明显看到四个梯形，当元素的高与宽相等且为0是，就形开了四个三角形，当设置其中一边与其它三条边不同颜色时（其它三边一般设置为透明或者同背景然），就可以看到一个三角形</p>
+<div style="display:inline-block;border: 20px solid blue;border-left-color: #f00;width: 20px;height: 20px;margin-right:40px;box-sizing: content-box"></div><br><div style="display:inline-block;border: 20px solid blue;border-left-color: #f00; width: 0px;height: 0px;margin-right:40px;"></div><br><div style="display:inline-block;border: 20px solid transparent;border-left-color: #f00; width: 0px;height: 0px;"></div>
+
+<p>代码分别为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">梯形：border: 20px solid blue;border-left-color: #f00; width: 20px;height: 20px;</div><div class="line">三角形：border: 20px solid blue;border-left-color: #f00; width: 0px;height: 0px;</div><div class="line">三角：border: 20px solid transparent;border-left-color: #f00; width: 0px;height: 0px;</div></pre></td></tr></table></figure></p>
+<p>可以看到，只要修改border-@-color，就可以得到一个对应方向的三角，@ 可以为top，left，right，bottom</p>
+<h3 id="任意的三角"><a href="#任意的三角" class="headerlink" title="任意的三角"></a>任意的三角</h3><p>通过上面的方法可以得到一个对应方向的三角，但是可以看到三角的顶角都是90度，那么只要改变三角形的三边就可以改变角度了，在这里只需要修改对应边的长度，如下：</p>
+<p><div style="display:inline-block;border: 20px solid transparent;border-left:80px solid #f00; width: 0px;height: 0px;"></div><br>代码分别为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border: 20px solid transparent;border-left:80px solid #f00; width: 0px;height: 0px;</div></pre></td></tr></table></figure></p>
+<p>可以看到，只要修改border-@，对应的宽度，就可以得到一个对应方向的三角，@ 可以为top，left，right，bottom</p>
+<p>#稍微高大上点的方法-伪类<br>通过 :after 伪类来实现，<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">点击此处</a>演示，实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.left-ang&#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">.left-ang:after &#123;</div><div class="line">  border: 10px solid transparent;</div><div class="line">  border-left: 10px solid #f00;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  position: absolute;</div><div class="line">  content: &apos; &apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可以达到相同的效果。</p>
+<h3 id="实现箭头"><a href="#实现箭头" class="headerlink" title="实现箭头"></a>实现箭头</h3><p>方法也是通过伪类：after 不过要配合：before来实现，原理就是将：after与：before形成的三角形使用margin进行平移不同的数值。<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">点击此处</a>演示，实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.left_ang&#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">.left_ang:after, .left_ang:before &#123;</div><div class="line">  border: 10px solid transparent;</div><div class="line">  border-left: 10px solid #fff;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  right: -20px;</div><div class="line">  content: &apos; &apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.left_ang:before &#123;</div><div class="line">  border-left-color: #f00;</div><div class="line">  right: -21px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看出，将：after和：before先均向右移动20px,然后把：before重新设置成移动21px，这样就形成了1px的差值。</p>
+<h3 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h3><p>1、<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">进度条</a><br>2、<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">仿对话框</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>由于IE8上不支持rgba，所以如果要兼容到IE8，那么颜色值不能设置成rgba。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;简单介绍&quot;&gt;&lt;a href=&quot;#简单介绍&quot; class=&quot;headerlink&quot; title=&quot;简单介绍&quot;&gt;&lt;/a&gt;简单介绍&lt;/h3&gt;&lt;p&gt;三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。&lt;br&gt;今天在这里给出几种用css3做出来的样式&lt;/p&gt;
+&lt;h3 i
+    
+    </summary>
+    
+      <category term="css" scheme="http://wsdever.github.io/categories/css/"/>
+    
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
+      <category term="css3" scheme="http://wsdever.github.io/tags/css3/"/>
+    
+  </entry>
   
   <entry>
     <title>HTML5-indexedDB 的使用</title>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用纯CSS3实现三角或箭头 | Hexo | My GitHub Blog !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="css,css3">
+  <meta name="description" content="简单介绍三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。今天在这里给出几种用css3做出来的样式
+原理元素的border属性，两端拐角其实是梯形连接，当元素的高与宽相等时可以明显看到四个梯形，当元素的高与宽相等且为0是，就形开了四个三角形，当设置其中一边与其它三条边不同颜色时（其它三边一般设置为透明或者同背景然），就可以看到一个三角形
+
+
+代码分别为：123梯形：border: 20px">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用纯CSS3实现三角或箭头">
+<meta property="og:url" content="http://wsdever.github.io/2017/02/15/css-angel/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="简单介绍三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。今天在这里给出几种用css3做出来的样式
+原理元素的border属性，两端拐角其实是梯形连接，当元素的高与宽相等时可以明显看到四个梯形，当元素的高与宽相等且为0是，就形开了四个三角形，当设置其中一边与其它三条边不同颜色时（其它三边一般设置为透明或者同背景然），就可以看到一个三角形
+
+
+代码分别为：123梯形：border: 20px">
+<meta property="og:updated_time" content="2017-04-05T07:20:14.510Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用纯CSS3实现三角或箭头">
+<meta name="twitter:description" content="简单介绍三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。今天在这里给出几种用css3做出来的样式
+原理元素的border属性，两端拐角其实是梯形连接，当元素的高与宽相等时可以明显看到四个梯形，当元素的高与宽相等且为0是，就形开了四个三角形，当设置其中一边与其它三条边不同颜色时（其它三边一般设置为透明或者同背景然），就可以看到一个三角形
+
+
+代码分别为：123梯形：border: 20px">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>Hexo &copy; 2017</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">用纯CSS3实现三角或箭头</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">用纯CSS3实现三角或箭头</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2017-02-15T10:28:03.000Z" itemprop="datePublished" class="page-time">
+  2017-02-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/css/">css</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-css-angel" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css3/">css3</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简单介绍"><span class="post-toc-text">简单介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原理"><span class="post-toc-text">原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#任意的三角"><span class="post-toc-text">任意的三角</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现箭头"><span class="post-toc-text">实现箭头</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实际应用"><span class="post-toc-text">实际应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意事项"><span class="post-toc-text">注意事项</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>三角形、箭头在页面菜单、导航、甚至进度条上使用的非常多。<br>今天在这里给出几种用css3做出来的样式</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>元素的border属性，两端拐角其实是梯形连接，当元素的高与宽相等时可以明显看到四个梯形，当元素的高与宽相等且为0是，就形开了四个三角形，当设置其中一边与其它三条边不同颜色时（其它三边一般设置为透明或者同背景然），就可以看到一个三角形</p>
+<div style="display:inline-block;border: 20px solid blue;border-left-color: #f00;width: 20px;height: 20px;margin-right:40px;box-sizing: content-box"></div><br><div style="display:inline-block;border: 20px solid blue;border-left-color: #f00; width: 0px;height: 0px;margin-right:40px;"></div><br><div style="display:inline-block;border: 20px solid transparent;border-left-color: #f00; width: 0px;height: 0px;"></div>
+
+<p>代码分别为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">梯形：border: 20px solid blue;border-left-color: #f00; width: 20px;height: 20px;</div><div class="line">三角形：border: 20px solid blue;border-left-color: #f00; width: 0px;height: 0px;</div><div class="line">三角：border: 20px solid transparent;border-left-color: #f00; width: 0px;height: 0px;</div></pre></td></tr></table></figure></p>
+<p>可以看到，只要修改border-@-color，就可以得到一个对应方向的三角，@ 可以为top，left，right，bottom</p>
+<h3 id="任意的三角"><a href="#任意的三角" class="headerlink" title="任意的三角"></a>任意的三角</h3><p>通过上面的方法可以得到一个对应方向的三角，但是可以看到三角的顶角都是90度，那么只要改变三角形的三边就可以改变角度了，在这里只需要修改对应边的长度，如下：</p>
+<p><div style="display:inline-block;border: 20px solid transparent;border-left:80px solid #f00; width: 0px;height: 0px;"></div><br>代码分别为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">border: 20px solid transparent;border-left:80px solid #f00; width: 0px;height: 0px;</div></pre></td></tr></table></figure></p>
+<p>可以看到，只要修改border-@，对应的宽度，就可以得到一个对应方向的三角，@ 可以为top，left，right，bottom</p>
+<p>#稍微高大上点的方法-伪类<br>通过 :after 伪类来实现，<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">点击此处</a>演示，实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">.left-ang&#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">.left-ang:after &#123;</div><div class="line">  border: 10px solid transparent;</div><div class="line">  border-left: 10px solid #f00;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  position: absolute;</div><div class="line">  content: &apos; &apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>也可以达到相同的效果。</p>
+<h3 id="实现箭头"><a href="#实现箭头" class="headerlink" title="实现箭头"></a>实现箭头</h3><p>方法也是通过伪类：after 不过要配合：before来实现，原理就是将：after与：before形成的三角形使用margin进行平移不同的数值。<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">点击此处</a>演示，实现如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">.left_ang&#123;</div><div class="line">  position: relative;</div><div class="line">&#125;</div><div class="line">.left_ang:after, .left_ang:before &#123;</div><div class="line">  border: 10px solid transparent;</div><div class="line">  border-left: 10px solid #fff;</div><div class="line">  width: 0;</div><div class="line">  height: 0;</div><div class="line">  position: absolute;</div><div class="line">  top: 0;</div><div class="line">  right: -20px;</div><div class="line">  content: &apos; &apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.left_ang:before &#123;</div><div class="line">  border-left-color: #f00;</div><div class="line">  right: -21px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>可以看出，将：after和：before先均向右移动20px,然后把：before重新设置成移动21px，这样就形成了1px的差值。</p>
+<h3 id="实际应用"><a href="#实际应用" class="headerlink" title="实际应用"></a>实际应用</h3><p>1、<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">进度条</a><br>2、<a style="color:red" href="http://wshome.bid/main/shows/css3-arrow.html" target="_blank" _blank="" rel="external">仿对话框</a></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>由于IE8上不支持rgba，所以如果要兼容到IE8，那么颜色值不能设置成rgba。</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2017/02/15/css-angel/" target="_blank" rel="external">http://wsdever.github.io/2017/02/15/css-angel/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2016/11/22/20161122/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">HTML5-indexedDB 的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="css-angel" data-title="用纯CSS3实现三角或箭头" data-url="http://wsdever.github.io/2017/02/15/css-angel/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
