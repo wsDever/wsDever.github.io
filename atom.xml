@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
-  <updated>2017-04-05T07:26:06.028Z</updated>
+  <updated>2017-04-12T02:36:04.609Z</updated>
   <id>http://wsdever.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用css3实现png图片颜色变换</title>
+    <link href="http://wsdever.github.io/2017/04/09/20170409/"/>
+    <id>http://wsdever.github.io/2017/04/09/20170409/</id>
+    <published>2017-04-09T04:10:11.000Z</published>
+    <updated>2017-04-12T02:36:04.609Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>在项目上，时常需要对一些小图标进行颜色的修改。比如现在一张黑色的信息图标，但是项目里需要的是红色的，一般的做法是使用ps把图标颜色换成红色，如果另一个页面需要黄色的，就再做一张黄色的。。。。。。（无比麻烦）。。。。。。另一种方法就是把这个信息图标做成字体，引用进来。。。。。。（为了一个小图标要做一种字体，还不如第一种呢）。。。。。。</p>
+<p>现在这一切都将变的简单，使用css3新属性filter中的drop-shadow，即可实现对png图标变换任意颜色。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>css3的filter有10种效果，<a style="color:red" href="http://www.w3cplus.com/css3/ten-effects-with-css3-filter" target="_blank" _blank="" rel="external">点此了解</a>。其中drop-shadow滤镜可以给元素或图片非透明区域添加投影。对于背景透明的png图标，我们只需要添加一个不模糊的投影，并对投影添加一个我们需要的颜色，然后对原图标实施平移，把投影移动原图标的位置就可以了。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><p>html：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;原始图片&lt;/h3&gt;</div><div class="line">&lt;div&gt;&lt;i class=&quot;ws-icon icon-mes&quot;&gt;&lt;/i&gt;&lt;/div&gt;</div><div class="line">&lt;h3&gt;变色图片&lt;/h3&gt;</div><div class="line">&lt;div&gt;&lt;i class=&quot;ws-icon&quot;&gt;&lt;i class=&quot;ws-icon icon-mes&quot;&gt;&lt;/i&gt;&lt;/i&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">.icon-mes &#123;</div><div class="line">    background: url(mes.png) no-repeat center;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.ws-icon &#123;</div><div class="line">    display: inline-block;</div><div class="line">    width: 26px;</div><div class="line">    height: 24px;</div><div class="line">    overflow: hidden;</div><div class="line">&#125;</div><div class="line"></div><div class="line">.ws-icon &gt; .ws-icon &#123;</div><div class="line">    /* 平移：第一种 */</div><div class="line">    /*</div><div class="line">    	transform:translateX(-26px);</div><div class="line">    	border-right: 26px solid transparent;</div><div class="line">    */</div><div class="line">    /* 平移：第二种 */</div><div class="line">    width: 78px;</div><div class="line">    transform: translateX(-52px);</div><div class="line">    </div><div class="line">    position: relative;</div><div class="line">    -webkit-filter: drop-shadow(rgba(63,136,204,.5) 26px 0);</div><div class="line">    filter: drop-shadow(rgba(63,136,204,.5) 24px 0);</div><div class="line">    cursor: pointer;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>css代码里，其中最主要的就是drop-shadow(h-shadow v-shadow blur spread color)，它有五个参数，具体使用方法及兼容性，请<a style="color:red" href="http://www.runoob.com/cssref/css3-pr-filter.html" target="_blank" _blank="" rel="external">点此查看</a>。</p>
+<p>对原图标的平移这里使用了两种，第一种是使用border的透明，将原图标平移到border的位置。第二种方法，设置投影的icon宽度为原图标的3倍，然后将原图标平移到投影区域之外。</p>
+<p>html代码里，dom结构如果不想如此嵌套，也可以使用:after伪类来实现。如下<br>html：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;h3&gt;原始图片&lt;/h3&gt;</div><div class="line">&lt;div&gt;&lt;i class=&quot;ws-icon icon-mes&quot;&gt;&lt;/i&gt;&lt;/div&gt;</div><div class="line">&lt;h3&gt;使用:after实现&lt;/h3&gt;</div><div class="line">&lt;div&gt;&lt;i class=&quot;ws-icon-af icon-mes-af&quot;&gt;&lt;/i&gt;&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>css：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">.icon-mes-af:after &#123;</div><div class="line">    background: url(mes.png) no-repeat center;</div><div class="line">&#125;</div><div class="line">.ws-icon-af &#123;</div><div class="line">    display: inline-block;</div><div class="line">    width: 26px;</div><div class="line">    height: 24px;</div><div class="line">    overflow: hidden;</div><div class="line">    position: relative;</div><div class="line">&#125;</div><div class="line">.ws-icon-af:after&#123;</div><div class="line">    content: &quot;&quot;;</div><div class="line">    position: absolute;</div><div class="line">    height: 24px;</div><div class="line">    width: 78px;</div><div class="line">    left:0;</div><div class="line">    transform: translateX(-52px);</div><div class="line">    -webkit-filter: drop-shadow(rgba(63,136,204,.5) 26px 0);</div><div class="line">    filter: drop-shadow(rgba(63,136,204,.5) 24px 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>实现的效果是相同的，dom结构更加简单。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>看实例，<a style="color:red" href="http://wshome.bid/main/shows/css3/css3-filter-dropshadow.html" target="_blank" _blank="" rel="external">点此查看</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h3&gt;&lt;p&gt;在项目上，时常需要对一些小图标进行颜色的修改。比如现在一张黑色的信息图标，但是项目里需要的是红色的，一般的做法是使用ps把图
+    
+    </summary>
+    
+      <category term="css" scheme="http://wsdever.github.io/categories/css/"/>
+    
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
+      <category term="css3" scheme="http://wsdever.github.io/tags/css3/"/>
+    
+  </entry>
   
   <entry>
     <title>用纯CSS3实现三角或箭头</title>
