@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Html5-canvas-绘制圆环渐变进度条 | Hexo | My GitHub Blog !</title>
+  <title>Html5-canvas-绘制圆环渐变进度条 | 沧海粟 | 一入前端深似海，从此坑中起不来！</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#3F51B5">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Html5-canvas-绘制圆环渐变进度条">
 <meta property="og:url" content="http://wsdever.github.io/2016/08/13/20160813/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="沧海粟">
 <meta property="og:description" content="使用场景项目上要用到一个圆环形的进度条，同时随着值的不同，颜色也不同，但是找了很多，都是水平进度条，或者径向渐变，不满足需求。
 思路canvas的api中已提供了两种，径向和线性渐变，并没有这种环形的渐变，所以很容易画出对称渐变。但是canvas提供了使用Pattern来绘制，Pattern可以是图片等其它对像，那么这里就使用到这个api，需要使用一张环形渐变的图像来绘制非对称渐变。
 绘制对称环形">
@@ -31,7 +31,7 @@
 绘制对称环形">
 <meta name="twitter:image" content="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-circle2.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="沧海粟" type="application/atom+xml">
   
   <meta name="summary" content="None">
   <link rel="shortcut icon" href="/favicon.ico">
@@ -97,13 +97,20 @@
             </a>
           </li>
       
+          <li class="waves-block waves-effect">
+            <a href="/webs"  >
+              <i class="icon icon-lg icon-webs"></i>
+              友链
+            </a>
+          </li>
+      
     </ul>
 
     <footer class="footer">
 <div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
 <!--
   <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>Hexo &copy; 2017</p>
+  <p>沧海粟 &copy; 2017</p>
   <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
   <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
   <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
@@ -201,7 +208,7 @@
                 本文地址：
                 <a href="http://wsdever.github.io/2016/08/13/20160813/" target="_blank" rel="external">http://wsdever.github.io/2016/08/13/20160813/</a>
                 </p>
-                <footer><cite><a href="http://wsdever.github.io">@Hexo</a></cite></footer>
+                <footer><cite><a href="http://wsdever.github.io">@沧海粟</a></cite></footer>
             </blockquote>
             </div>
             

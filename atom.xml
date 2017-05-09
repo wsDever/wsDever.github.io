@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
-  <subtitle>My GitHub Blog !</subtitle>
+  <title>沧海粟</title>
+  <subtitle>一入前端深似海，从此坑中起不来！</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
@@ -10,7 +10,7 @@
   
   <author>
     <name>Wu Shang</name>
-    <email>809663381@qq.com</email>
+    <email>80966338*@qq.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -469,11 +469,11 @@ $(&quot;#input_password&quot;).blur(function() {
       <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
     
     
-      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
-    
       <category term="jquery" scheme="http://wsdever.github.io/tags/jquery/"/>
     
       <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
+    
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
     
   </entry>
   
