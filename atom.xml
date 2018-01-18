@@ -261,7 +261,7 @@
     <link href="http://wsdever.github.io/2016/09/10/20160910/"/>
     <id>http://wsdever.github.io/2016/09/10/20160910/</id>
     <published>2016-09-10T02:07:07.000Z</published>
-    <updated>2016-10-01T13:57:54.796Z</updated>
+    <updated>2016-10-01T13:57:54.797Z</updated>
     
     <content type="html"><![CDATA[<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>使用html5的canvas写的一个类似360清理大师那样的球形清理进度条，如下图所示</p>
 <p><div class="img-box"><br><img src="http://obng7479r.bkt.clouddn.com/images/blog/other/canvas-ball.png" width="200"><br></div></p>
@@ -331,7 +331,7 @@
     <link href="http://wsdever.github.io/2015/05/01/20150321/"/>
     <id>http://wsdever.github.io/2015/05/01/20150321/</id>
     <published>2015-05-01T13:17:23.000Z</published>
-    <updated>2016-10-05T09:36:10.480Z</updated>
+    <updated>2016-10-05T09:36:10.481Z</updated>
     
     <content type="html"><![CDATA[<p>作为一个前端开发者，现在less或者scss已是不可或缺的技能。会了这个技能能节省出许多写css的时间。</p>
 <h3 id="普通计算"><a href="#普通计算" class="headerlink" title="普通计算"></a>普通计算</h3><p>最近在写自己的网站的时候，由于对less的认识不深入，写了以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@endwidth:calc(50% - 50px);</div></pre></td></tr></table></figure></p>
