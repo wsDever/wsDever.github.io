@@ -16,7 +16,10 @@
 
 组件引用顺序不正常，应该先引用相对路径组件，再引入本地自定义组件（绝对路径）
 
-字符串链接，不要再使用 + ，正确写法是1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2">
+字符串链接，不要再使用 + ，正确写法是
+1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2
+
+对数组使用map循环时，内部的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React 踩坑总结">
 <meta property="og:url" content="http://wsdever.github.io/2018/01/18/20180118/index.html">
@@ -27,8 +30,11 @@
 
 组件引用顺序不正常，应该先引用相对路径组件，再引入本地自定义组件（绝对路径）
 
-字符串链接，不要再使用 + ，正确写法是1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2">
-<meta property="og:updated_time" content="2018-01-18T07:14:19.548Z">
+字符串链接，不要再使用 + ，正确写法是
+1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2
+
+对数组使用map循环时，内部的">
+<meta property="og:updated_time" content="2018-01-18T07:54:04.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React 踩坑总结">
 <meta name="twitter:description" content="随笔记录
@@ -37,7 +43,10 @@
 
 组件引用顺序不正常，应该先引用相对路径组件，再引入本地自定义组件（绝对路径）
 
-字符串链接，不要再使用 + ，正确写法是1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2">
+字符串链接，不要再使用 + ，正确写法是
+1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2
+
+对数组使用map循环时，内部的">
   
     <link rel="alternative" href="/atom.xml" title="沧海粟" type="application/atom+xml">
   
@@ -196,7 +205,13 @@
 </ul>
 <p>组件引用顺序不正常，应该先引用相对路径组件，再引入本地自定义组件（绝对路径）</p>
 <ul>
-<li>字符串链接，不要再使用 + ，正确写法是<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`string1-$&#123;string2&#125;`  =&gt;  结果是：string1-string2</div></pre></td></tr></table></figure></li>
+<li><p>字符串链接，不要再使用 + ，正确写法是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`string1-$&#123;string2&#125;`  =&gt;  结果是：string1-string2</div></pre></td></tr></table></figure>
+</li>
+<li><p>对数组使用map循环时，内部的匿名函数应该使用箭头函数，否则内部使用this.操作时，会出现undefind，这是因为箭头函数，本身不具有this,而是总指向它的父级，如果父级为匿名，则还会一直向上，直到找到为止。</p>
+</li>
+<li><p>对数组使用map循环时，匿名函数内部如果只是渲染dom，而无其它组件，则需要省略｛｝，可以理解为在react会将｛｝内的内部当作表达式，进行计算，而不进行渲染（也可以不省略，需要在添加return语句）。</p>
+</li>
 </ul>
 
 
