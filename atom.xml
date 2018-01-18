@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
-  <updated>2017-04-12T02:36:04.609Z</updated>
+  <updated>2018-01-18T07:14:19.548Z</updated>
   <id>http://wsdever.github.io/</id>
   
   <author>
@@ -14,6 +14,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>React 踩坑总结</title>
+    <link href="http://wsdever.github.io/2018/01/18/20180118/"/>
+    <id>http://wsdever.github.io/2018/01/18/20180118/</id>
+    <published>2018-01-18T06:58:32.000Z</published>
+    <updated>2018-01-18T07:14:19.548Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="随笔记录"><a href="#随笔记录" class="headerlink" title="随笔记录"></a>随笔记录</h3><ul>
+<li>报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Absolute imports should come before relative imports</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>组件引用顺序不正常，应该先引用相对路径组件，再引入本地自定义组件（绝对路径）</p>
+<ul>
+<li>字符串链接，不要再使用 + ，正确写法是<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">`string1-$&#123;string2&#125;`  =&gt;  结果是：string1-string2</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;随笔记录&quot;&gt;&lt;a href=&quot;#随笔记录&quot; class=&quot;headerlink&quot; title=&quot;随笔记录&quot;&gt;&lt;/a&gt;随笔记录&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;报错&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;
+    
+    </summary>
+    
+      <category term="React" scheme="http://wsdever.github.io/categories/React/"/>
+    
+    
+      <category term="ES6" scheme="http://wsdever.github.io/tags/ES6/"/>
+    
+      <category term="React" scheme="http://wsdever.github.io/tags/React/"/>
+    
+      <category term="Eslint" scheme="http://wsdever.github.io/tags/Eslint/"/>
+    
+  </entry>
   
   <entry>
     <title>用css3实现png图片颜色变换</title>
@@ -469,11 +504,11 @@ $(&quot;#input_password&quot;).blur(function() {
       <category term="javascript" scheme="http://wsdever.github.io/categories/javascript/"/>
     
     
+      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
+    
       <category term="jquery" scheme="http://wsdever.github.io/tags/jquery/"/>
     
       <category term="javascript" scheme="http://wsdever.github.io/tags/javascript/"/>
-    
-      <category term="css" scheme="http://wsdever.github.io/tags/css/"/>
     
   </entry>
   
