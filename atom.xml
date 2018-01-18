@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wsdever.github.io/"/>
-  <updated>2018-01-18T07:54:04.124Z</updated>
+  <updated>2018-01-18T08:03:05.714Z</updated>
   <id>http://wsdever.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://wsdever.github.io/2018/01/18/20180118/"/>
     <id>http://wsdever.github.io/2018/01/18/20180118/</id>
     <published>2018-01-18T06:58:32.000Z</published>
-    <updated>2018-01-18T07:54:04.124Z</updated>
+    <updated>2018-01-18T08:03:05.714Z</updated>
     
     <content type="html"><![CDATA[<h3 id="随笔记录"><a href="#随笔记录" class="headerlink" title="随笔记录"></a>随笔记录</h3><ul>
 <li>报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Absolute imports should come before relative imports</div></pre></td></tr></table></figure>
@@ -34,6 +34,7 @@
 <li><p>对数组使用map循环时，内部的匿名函数应该使用箭头函数，否则内部使用this.操作时，会出现undefind，这是因为箭头函数，本身不具有this,而是总指向它的父级，如果父级为匿名，则还会一直向上，直到找到为止。</p>
 </li>
 <li><p>对数组使用map循环时，匿名函数内部如果只是渲染dom，而无其它组件，则需要省略｛｝，可以理解为在react会将｛｝内的内部当作表达式，进行计算，而不进行渲染（也可以不省略，需要在添加return语句）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">arrData.map(name =&gt;</div><div class="line">	&lt;div className=&#123; name.label === this.state.result</div><div class="line">	  ? &apos;cur-select&apos; : &apos;&apos; &#125; key=&#123;name.value&#125; onClick=&#123;() =&gt; &#123; this.selectClick(name.value, name.label); &#125;&#125; &gt;</div><div class="line">	  &#123;name.label&#125;</div><div class="line">	  &lt;span className=&quot;icon icon-selected&quot;&gt;&lt;/span&gt;</div><div class="line">	&lt;/div&gt;</div><div class="line"> )</div><div class="line">或者：</div><div class="line">arrData.map((item, index) =&gt; &#123;</div><div class="line">    const groupItem = Object.assign(&#123;</div><div class="line">      desc: item.description,</div><div class="line">      price: item.price</div><div class="line">    &#125;);</div><div class="line">    return &lt;ProdItem &#123;...groupItem&#125; key=&#123;index&#125; /&gt;;</div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
 </li>
 </ul>
 ]]></content>
