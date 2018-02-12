@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>React 认识 | 沧海粟 | 一入前端深似海，从此坑中起不来！</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="ES6,React,Eslint,Redux">
+  <meta name="description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React 认识">
+<meta property="og:url" content="http://wsdever.github.io/2018/01/10/20180112-react/index.html">
+<meta property="og:site_name" content="沧海粟">
+<meta property="og:description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
+<meta property="og:updated_time" content="2018-02-12T08:56:27.355Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React 认识">
+<meta name="twitter:description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
+  
+    <link rel="alternative" href="/atom.xml" title="沧海粟" type="application/atom+xml">
+  
+  <meta name="summary" content="None">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <nav id="menu" class="hide" >
+   <div class="inner flex-row-vertical">
+  <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+      <i class="icon icon-lg icon-close"></i>
+  </a>
+  <div class="brand-wrap">
+    <div class="brand">
+      <div class="brand-ws">
+      <a href="/" class="avatar"><img src="/img/logo.jpg"></a>
+      </div>
+      <div class="brand-ws">
+      <hgroup class="introduce">
+        <h5 class="nickname">Wu Shang</h5>
+        <a href="mailto:809663381@qq.com" title="809663381@qq.com" class="mail">809663381@qq.com</a>
+      </hgroup>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-wrap flex-col">
+    <ul class="nav">
+      
+          <li class="waves-block waves-effect">
+            <a href="/"  >
+              <i class="icon icon-lg icon-home"></i>
+              主页
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/archives"  >
+              <i class="icon icon-lg icon-archives"></i>
+              文章
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/tags"  >
+              <i class="icon icon-lg icon-tags"></i>
+              标签
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/resume"  >
+              <i class="icon icon-lg icon-wpforms"></i>
+              简历
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="https://github.com/wsDever" target="_blank" >
+              <i class="icon icon-lg icon-github"></i>
+              Github
+            </a>
+          </li>
+      
+          <li class="waves-block waves-effect">
+            <a href="/webs"  >
+              <i class="icon icon-lg icon-webs"></i>
+              友链
+            </a>
+          </li>
+      
+    </ul>
+
+    <footer class="footer">
+<div class="ws-footer"><div class="music_wrap"><div class="artist_info"><div class="artist_avatar"><canvas id="myCanvas" width="90" height="90"> H5</canvas></div><div class="action_button"><div class="prev" title="上一首">&#xe60d;</div><div class="play" title="播放" id="play">&#xe60a;</div><div class="pause hidden" title="暂停">&#xe60b;</div><div class="next" title="下一首">&#xe60c;</div></div><div><div class="artist" style="display:none">Artist</div><div class="music_info"><span class="artist_name">歌手</span><span class="music_name">歌曲</span></div><div class="music_album" style="display:none">专辑</div></div></div><div class="control"><div class="option"><div class="time">-00:00</div><div class="volume" title="音量"><p>&#xe604;</p></div><div class="volume_wrap hidden"><div class="volume_bar"><div class="volume_now"></div></div></div><ul id="option_list"><li class="repeat" title="单曲循环">&#xe609;</li><li class="shuffle" title="随机播放">&#xe608;</li><li class="list" title="列表循环">&#xe606;</li></ul></div><div class="progress_bar" id="bar"><div class="progress"></div><div class="buffer"></div></div></div><audio id="audio"><p>您的浏览器不支持HTML5播放器呢！赶紧换一个最新的呗^_^.</p></audio></div></div>
+<!--
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>沧海粟 &copy; 2018</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+  -->
+</footer>
+
+  </div>
+</div>
+
+  </nav>
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">React 认识</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input " autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+    </div>
+</header>
+<header class="content-header">
+  <div class="container">
+    <h1 class="author">React 认识</h1>
+    <h5 class="subtitle">
+        
+            <time datetime="2018-01-10T07:48:42.000Z" itemprop="datePublished" class="page-time">
+  2018-01-10
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/React/">React</a></li></ul>
+
+        
+    </h5>
+  </div>
+</header>
+
+    <div class="container body-wrap">
+      <article id="post-20180112-react" 
+  class="article article-type-post" itemprop="blogPost">
+    <div class="post-meta flex-row">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eslint/">Eslint</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redux/">Redux</a></li></ul>
+
+    </div>
+    <div class="post-body">
+        <aside class="post-widget" id="post-widget">
+
+            
+
+            
+            <nav class="post-toc-wrap" id="post-toc">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————一个渲染UI的框架"><span class="post-toc-text">React之————一个渲染UI的框架</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————Virtual-Dom"><span class="post-toc-text">React之————Virtual Dom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————组件化"><span class="post-toc-text">React之————组件化</span></a></li></ol>
+            </nav>
+            
+        </aside>
+
+        <div class="post-main">
+
+            <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="React之————一个渲染UI的框架"><a href="#React之————一个渲染UI的框架" class="headerlink" title="React之————一个渲染UI的框架"></a>React之————一个渲染UI的框架</h2><p>react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。</p>
+<h2 id="React之————Virtual-Dom"><a href="#React之————Virtual-Dom" class="headerlink" title="React之————Virtual Dom"></a>React之————Virtual Dom</h2><p>说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jquery再熟悉不过了，比如jquery对相关id，class元素的操作，前提是这个元素在页面上存在，做出修改后，也是直接将真实的dom重新渲染，如果元素不存在也就没法操作了。而virtual dom正好相反的，它会在渲染前通过在virtual dom中比较，只渲染修改过的部分，比如一个有100个dom的页面，只修改了其中一个，那么页面重新渲染的也只有这一个。通过react-developer工具，可以看到页面中的一个dom在virtual dom中是以这样的结构存在的：</p>
+<pre><code>{
+  $$typeof: Symbol(react.element),
+  _owner: null,
+  _self: null,
+  _source: null,
+  _store: Object,
+  key: null,
+  props:{
+    children: Object,
+    className: &apos;footer-select&apos;
+    onClick: onClick() 
+  },
+  ref:null,
+  type:&quot;span&quot;,
+  __proto__:Object
+}
+</code></pre><p>在react中，一个页面就是有无数个这样的结构组成的virtual dom tree组成。</p>
+<h2 id="React之————组件化"><a href="#React之————组件化" class="headerlink" title="React之————组件化"></a>React之————组件化</h2><p>与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个react组件都有两部分组成，数据和视图。数据就是state(props也算，不过它是别人的数据，组件只能用，不能修改)，它决定着视图如何显示，控制着视图的更新，虽然这个作用有点监听的意味了，但本质却是不一样的。这里使用的是setState函数，它会自动调用render，触发视图重新渲染。如果只是修改了state中的数据，而不去调用setState，是不会触发更新的。这也说明了react并不是一个mvc框架，只是一个负责UI的框架，对于数据变化这些都不关心，只关心结果——视图。react组件就是一个有独立功能的视图模块，然后零星的小组件就可以组成一个大组件，再组成一个页面，而每一个组件之间互不影响，功能独立，这样的好处就是可以多次复用。</p>
+
+
+            
+            <div class="post-reward">
+                <a id="rewardBtn" href="javascript:;" class="post-reward-btn waves-effect waves-circle waves-light">赏</a>
+            </div>
+            
+            
+            <blockquote>
+                <p>
+                本文地址：
+                <a href="http://wsdever.github.io/2018/01/10/20180112-react/" target="_blank" rel="external">http://wsdever.github.io/2018/01/10/20180112-react/</a>
+                </p>
+                <footer><cite><a href="http://wsdever.github.io">@沧海粟</a></cite></footer>
+            </blockquote>
+            </div>
+            
+<nav class="post-nav">
+  
+
+  
+    <div class="waves-block waves-effect next fr">
+      <a href="/2018/01/03/20180118/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">React 初识踩坑总结（随时更新）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+            
+            
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="20180112-react" data-title="React 认识" data-url="http://wsdever.github.io/2018/01/10/20180112-react/index.html"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"wsdever"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+        </div>
+    </div>
+</article>
+    </div>
+  </main>
+<div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div id="reward" class="reward-lay">
+    <a class="reward-off" id="rewardOff" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷，扫一下嘛~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+<script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+
+<script src="/js/main.js"></script>
+<script src="/js/music.js"></script>
+<script src="/js/musiclist.js"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<script type="text/template" id="search-tpl">
+<li class="item">
+    <a href="/{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</script>
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>
