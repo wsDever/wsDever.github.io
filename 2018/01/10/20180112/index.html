@@ -10,19 +10,19 @@
   
   
   <meta name="keywords" content="ES6,React,Eslint,Redux">
-  <meta name="description" content="一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
-组件化与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个rea">
+  <meta name="description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React 认识">
-<meta property="og:url" content="http://wsdever.github.io/2018/01/10/20180112-react/index.html">
+<meta property="og:url" content="http://wsdever.github.io/2018/01/10/20180112/index.html">
 <meta property="og:site_name" content="沧海粟">
-<meta property="og:description" content="一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
-组件化与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个rea">
-<meta property="og:updated_time" content="2018-02-12T09:04:54.393Z">
+<meta property="og:description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
+<meta property="og:updated_time" content="2018-02-12T08:56:27.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React 认识">
-<meta name="twitter:description" content="一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
-组件化与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个rea">
+<meta name="twitter:description" content="React之————一个渲染UI的框架react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。
+React之————Virtual Dom说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jqu">
   
     <link rel="alternative" href="/atom.xml" title="沧海粟" type="application/atom+xml">
   
@@ -153,7 +153,7 @@
 </header>
 
     <div class="container body-wrap">
-      <article id="post-20180112-react" 
+      <article id="post-20180112" 
   class="article article-type-post" itemprop="blogPost">
     <div class="post-meta flex-row">
         
@@ -167,7 +167,7 @@
 
             
             <nav class="post-toc-wrap" id="post-toc">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一个渲染UI的框架"><span class="post-toc-text">一个渲染UI的框架</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#组件化"><span class="post-toc-text">组件化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Virtual-Dom"><span class="post-toc-text">Virtual Dom</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————一个渲染UI的框架"><span class="post-toc-text">React之————一个渲染UI的框架</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————Virtual-Dom"><span class="post-toc-text">React之————Virtual Dom</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#React之————组件化"><span class="post-toc-text">React之————组件化</span></a></li></ol>
             </nav>
             
         </aside>
@@ -175,9 +175,8 @@
         <div class="post-main">
 
             <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="一个渲染UI的框架"><a href="#一个渲染UI的框架" class="headerlink" title="一个渲染UI的框架"></a>一个渲染UI的框架</h2><p>react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。</p>
-<h2 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h2><p>与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个react组件都有两部分组成，数据和视图。数据就是state(props也算，不过它是别人的数据，组件只能用，不能修改)，它决定着视图如何显示，控制着视图的更新，虽然这个作用有点监听的意味了，但本质却是不一样的。这里使用的是setState函数，它会自动调用render，触发视图重新渲染。如果只是修改了state中的数据，而不去调用setState，是不会触发更新的。这也说明了react并不是一个mvc框架，只是一个负责UI的框架，对于数据变化这些都不关心，只关心结果——视图。react组件就是一个有独立功能的视图模块，然后零星的小组件就可以组成一个大组件，再组成一个页面，而每一个组件之间互不影响，功能独立，这样的好处就是可以多次复用。</p>
-<h2 id="Virtual-Dom"><a href="#Virtual-Dom" class="headerlink" title="Virtual Dom"></a>Virtual Dom</h2><p>说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jquery再熟悉不过了，比如jquery对相关id，class元素的操作，前提是这个元素在页面上存在，做出修改后，也是直接将真实的dom重新渲染，如果元素不存在也就没法操作了。而virtual dom正好相反的，它会在渲染前通过在virtual dom中比较，只渲染修改过的部分，比如一个有100个dom的页面，只修改了其中一个，那么页面重新渲染的也只有这一个。通过react-developer工具，可以看到页面中的一个dom在virtual dom中是以这样的结构存在的：</p>
+            <h2 id="React之————一个渲染UI的框架"><a href="#React之————一个渲染UI的框架" class="headerlink" title="React之————一个渲染UI的框架"></a>React之————一个渲染UI的框架</h2><p>react的功能其实很单一，就是负责页面渲染的功能，它的使用离不开其它工具的使用，比如数据管理工具redux，路由管理react-router等，因为react只负责UI的渲染，而与之不同的是Angular几乎不需要这些，自身已经包含了这些。</p>
+<h2 id="React之————Virtual-Dom"><a href="#React之————Virtual-Dom" class="headerlink" title="React之————Virtual Dom"></a>React之————Virtual Dom</h2><p>说到virtual dom 绝不是一两句话能说清楚的。做为前端应该都对jquery再熟悉不过了，比如jquery对相关id，class元素的操作，前提是这个元素在页面上存在，做出修改后，也是直接将真实的dom重新渲染，如果元素不存在也就没法操作了。而virtual dom正好相反的，它会在渲染前通过在virtual dom中比较，只渲染修改过的部分，比如一个有100个dom的页面，只修改了其中一个，那么页面重新渲染的也只有这一个。通过react-developer工具，可以看到页面中的一个dom在virtual dom中是以这样的结构存在的：</p>
 <pre><code>{
   $$typeof: Symbol(react.element),
   _owner: null,
@@ -195,6 +194,7 @@
   __proto__:Object
 }
 </code></pre><p>在react中，一个页面就是有无数个这样的结构组成的virtual dom tree组成。</p>
+<h2 id="React之————组件化"><a href="#React之————组件化" class="headerlink" title="React之————组件化"></a>React之————组件化</h2><p>与angular以及其它mvc框架不同，使用react就会发现，它没有controller控制器，甚至它连数据监听都么有。每个react组件都有两部分组成，数据和视图。数据就是state(props也算，不过它是别人的数据，组件只能用，不能修改)，它决定着视图如何显示，控制着视图的更新，虽然这个作用有点监听的意味了，但本质却是不一样的。这里使用的是setState函数，它会自动调用render，触发视图重新渲染。如果只是修改了state中的数据，而不去调用setState，是不会触发更新的。这也说明了react并不是一个mvc框架，只是一个负责UI的框架，对于数据变化这些都不关心，只关心结果——视图。react组件就是一个有独立功能的视图模块，然后零星的小组件就可以组成一个大组件，再组成一个页面，而每一个组件之间互不影响，功能独立，这样的好处就是可以多次复用。</p>
 
 
             
@@ -206,7 +206,7 @@
             <blockquote>
                 <p>
                 本文地址：
-                <a href="http://wsdever.github.io/2018/01/10/20180112-react/" target="_blank" rel="external">http://wsdever.github.io/2018/01/10/20180112-react/</a>
+                <a href="http://wsdever.github.io/2018/01/10/20180112/" target="_blank" rel="external">http://wsdever.github.io/2018/01/10/20180112/</a>
                 </p>
                 <footer><cite><a href="http://wsdever.github.io">@沧海粟</a></cite></footer>
             </blockquote>
@@ -214,12 +214,19 @@
             
 <nav class="post-nav">
   
+    <div class="waves-block waves-effect prev fl">
+      <a href="/2018/01/10/20180112-react/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React 认识</h4>
+      </a>
+    </div>
+  
 
   
     <div class="waves-block waves-effect next fr">
-      <a href="/2018/01/10/20180112/" id="post-next" class="post-nav-link">
+      <a href="/2018/01/03/20180118/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">React 认识</h4>
+        <h4 class="title">React 初识踩坑总结（随时更新）</h4>
       </a>
     </div>
   
@@ -230,7 +237,7 @@
             
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="20180112-react" data-title="React 认识" data-url="http://wsdever.github.io/2018/01/10/20180112-react/index.html"></div>
+	<div class="ds-thread" data-thread-key="20180112" data-title="React 认识" data-url="http://wsdever.github.io/2018/01/10/20180112/index.html"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
