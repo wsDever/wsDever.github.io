@@ -34,7 +34,7 @@
 1`string1-$&amp;#123;string2&amp;#125;`  =&amp;gt;  结果是：string1-string2
 
 对数组使用map循环时，内部的匿名函数">
-<meta property="og:updated_time" content="2018-02-12T07:44:08.220Z">
+<meta property="og:updated_time" content="2018-02-24T07:00:20.974Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React 初识踩坑总结（随时更新）">
 <meta name="twitter:description" content="随笔记录
@@ -226,6 +226,13 @@
 </li>
 </ul>
 <p>在html中，直接使用｛listHtml｝即可。<br>需要注意的是函数的返回或者变量(listHtml)中只能有一个根dom。</p>
+<ul>
+<li>使用ref报下面的错误<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Using this.refs is deprecated</div><div class="line">Using string literals in ref attributes is deprecated</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>解决办法：<br>修改定义ref，和使用的地方<br>原来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div ref=&quot;testDiv&quot; /&gt;</div><div class="line">js:</div><div class="line">const div = this.refs.testDiv;</div></pre></td></tr></table></figure></p>
+<p>修改为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">html:</div><div class="line">&lt;div ref=&#123;(v) =&gt; &#123; this.testDiv = v; &#125;&#125; /&gt;</div><div class="line">js:</div><div class="line">const div = this.testDiv;</div></pre></td></tr></table></figure></p>
+<p>原因是：官方已将ref的（推荐）使用方式由string调用，修改为回调函数的形式 。</p>
 
 
             
